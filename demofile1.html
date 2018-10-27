@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8"/>
+    <title> Sergio's MyChAI</title>
+    <style>
+        #canvas {
+            border: 5px solid black;
+            background-size: 100%;
+            background-color: lightblue;
+        }
+    </style>
+</head>
+
+<body>
+    <center>
+        <h2>
+            This is My chess AI in develloppement...
+        </h2>
+        <h3>
+            Why not calling it My Chess AI -> MyChAI
+        </h1>
+    </center>
+    <center>
+        <canvas id="canvas" width="504px" height="504px">Sorry, but canvas not supported</canvas>
+    </center>
+    <center> <button type="button" onclick="turnBoard = !turnBoard;drawBackground();">TurnBoard</button></center> 
+    <script>
+        const rect = 63;
+        var FieldImg = new Image(); 
+        FieldImg.src = "lpieces.png";
+        var turnBoard = false;
+		var isSelected = {selected:false};
+		var figures = new Array(8);
+        for(let i = 0; i<8 ; i++){
+            figures[i] = new Array(8);
+        }
+        var connection = new WebSocket('ws://192.168.0.43:8082', ['soap', 'xmpp']);
+        connection.onopen = function () {
+        connection.send('Ping');
+        };
+
+        connection.onerror = function (error) {
+        console.log('WebSocket Error ' + error);
+        };
+
+        connection.onmessage = function (e) {
+        console.log('Server: ' + e.data);
+        };
+        
+        function changexy(x,y){
+            if(turnBoard){
+                let change = 9 - x - y;
+                return {x:y+change,y:x+change};
+            }
+            return {x:x,y:y};
+        }
+
+        var drawFigure = {
+            Wpawn: function(x,y,offset=0){
+                let xy = changexy(x,y);
+                x = xy.x; y = xy.y;
+                ctx.drawImage(FieldImg, 0, offset+0, 28, 54, 16+(x-1)*rect, (y-1)*rect, 28, 54);
+            },
+            Bpawn: function(x,y){
+                drawFigure.Wpawn(x,y,60);
+            },
+            Wrock:function(x,y,offset=0){
+                let xy = changexy(x,y);
+                x = xy.x; y = xy.y;
+                ctx.drawImage(FieldImg, 37, offset+0, 27, 54, 16+(x-1)*rect, (y-1)*rect+2, 27, 54);
+            },
+            Brock: function(x,y){
+                drawFigure.Wrock(x,y,60);
+            },
+            Wnight:function(x,y,offset=0){
+                let xy = changexy(x,y);
+                x = xy.x; y = xy.y;
+                ctx.drawImage(FieldImg, 70, offset+0, 31, 54, 16+(x-1)*rect, (y-1)*rect+2, 31, 54);
+            },
+            Bnight: function(x,y){
+                drawFigure.Wnight(x,y,60);
+            },
+            Wbishop:function(x,y,offset=0){
+                let xy = changexy(x,y);
+                x = xy.x; y = xy.y;
+                ctx.drawImage(FieldImg, 110, offset+0, 27, 54, 16+(x-1)*rect, (y-1)*rect+2, 27, 54);
+            },
+            Bbishop: function(x,y){
+                drawFigure.Wbishop(x,y,60);
+            },
+            Wqueen:function(x,y,offset=0){
+                let xy = changexy(x,y);
+                x = xy.x; y = xy.y;
+                ctx.drawImage(FieldImg, 144, offset+0, 32, 54, 16+(x-1)*rect, (y-1)*rect+2, 32, 54);
+            },
+            Bqueen: function(x,y){
+                drawFigure.Wqueen(x,y,60);
+            },
+            Wking:function(x,y,offset=0){
+                let xy = changexy(x,y);
+                x = xy.x; y = xy.y;
+                ctx.drawImage(FieldImg, 181, offset+0, 31, 54, 16+(x-1)*rect, (y-1)*rect+2, 31, 54);
+            },
+            Bking: function(x,y){
+                drawFigure.Wking(x,y,60);
+            }
+        };
+
+        function setfigures(x,y,figure){
+            figures[x-1][y-1] = figure;
+        }
+
+        function getMousePos(canvas,evt){
+            var rec = canvas.getBoundingClientRect();
+            return {
+                x: Math.max(1,Math.min(8, Math.floor(1+(evt.clientX - rec.left)/rect))),
+                y: Math.max(1,Math.min(8, Math.floor(1+(evt.clientY - rec.top)/rect)))
+            };
+        }
+
+        function selectFigure(x,y){
+            let xy = changexy(x,y);
+            x = xy.x; y = xy.y;
+            let fig = figures[x-1][y-1];
+            fillcase(x-1,y-1);
+            if(isSelected.selected){
+                isSelected.selected = false;
+                if(isSelected.x != x || isSelected.y != y){
+                    connection.send(isSelected.name + "," + isSelected.x + "," + isSelected.y + "," + x + "," + y);
+                    connection.onmessage = function (e) {
+                        if(e.data == 1){
+                            setfigures(x,y,figures[isSelected.x-1][isSelected.y-1]);
+                            figures[isSelected.x-1][isSelected.y-1] = null;
+                            fig = figures[x-1][y-1];
+                            fillcase(isSelected.x-1,isSelected.y-1);
+                        }else{
+                            isSelected.selected = true;
+                        }
+                        if(fig != null ){
+                            fig(x,y);
+                        }
+                    };
+                    return;
+                }
+            }else if(fig != null){
+                isSelected.x=x;
+                isSelected.y=y;
+                isSelected.name=fig.name;
+                isSelected.selected = true;
+				fillcase(x-1,y-1,'lightgreen');
+            }
+            if(fig != null ){
+                fig(x,y);
+            }
+        }
+
+        window.onload = function(){
+            c = document.getElementById("canvas");
+            ctx = c.getContext("2d");
+            c.addEventListener('click',function(evt){
+                var mousePos = getMousePos(c,evt);
+                selectFigure(mousePos.x,mousePos.y);
+            });
+            FieldImg.onload = function() {
+                for(let i = 1;i<=8;i++){
+                    setfigures(i,2,drawFigure.Wpawn)
+                    setfigures(i,7,drawFigure.Bpawn)
+                }
+                setfigures(1,1,drawFigure.Wrock);setfigures(8,1,drawFigure.Wrock);
+                setfigures(1,8,drawFigure.Brock);setfigures(8,8,drawFigure.Brock);
+                setfigures(2,1,drawFigure.Wnight);setfigures(7,1,drawFigure.Wnight);
+                setfigures(2,8,drawFigure.Bnight);setfigures(7,8,drawFigure.Bnight);
+                setfigures(3,1,drawFigure.Wbishop);setfigures(6,1,drawFigure.Wbishop);
+                setfigures(3,8,drawFigure.Bbishop);setfigures(6,8,drawFigure.Bbishop);
+                setfigures(5,1,drawFigure.Wqueen);setfigures(5,8,drawFigure.Bqueen);
+                setfigures(4,1,drawFigure.Wking);setfigures(4,8,drawFigure.Bking);
+            }
+            FieldImg.onload();
+            drawBackground();
+        }
+
+        function drawBackground(){
+            for(let x= 0; x<8; x++){
+                for(let y=0;y<8;y++){ 
+                    fillcase(x,y);
+                    let fig = figures[x][y];
+                    if(fig != null){
+                        fig(x+1,y+1);
+                    }
+                }
+            }
+			if(isSelected.selected){
+				fillcase(isSelected.x-1,isSelected.y-1,'lightgreen');
+				figures[isSelected.x-1][isSelected.y-1](isSelected.x,isSelected.y);
+			}
+        }
+		
+		function fillcase(x,y,color=null){
+			if(x%2 != y%2){
+                ctx.fillStyle = "darkgray";
+            }else{
+                ctx.fillStyle = "white";
+            }
+			if(color != null){
+				ctx.fillStyle = color;
+			}
+            let change = 9 - (x+1) - (y+1);
+            if(turnBoard){
+                ctx.fillRect(rect*(y+change),rect*(x+change),rect,rect);
+            }else{
+                ctx.fillRect(rect*x,rect*y,rect,rect);
+            }
+		}
+    </script>
+</body>
+</html>
