@@ -14,6 +14,18 @@ export class Board extends Component {
       return <Square value={i}/>;
     }
 
+    renderBoard(){
+        let table = [];
+        for (let i = 0; i<8; i++){
+            let children = [];
+            for(let j = 0; j<8; j++){
+                children.push(this.renderSquare(i+j));
+            }
+          table.push(<div className="board-row">{children}</div>);
+        }
+        return <div> {table} </div>;
+    }
+
     updateDimentions(){
         this.setState({width: window.innerWidth, height: window.innerHeight});
         console.log("updating window size...");
@@ -39,21 +51,7 @@ export class Board extends Component {
   
         return (
             <div style={divStyle}>
-            <div className="board-row">
-                {this.renderSquare(0)}
-                {this.renderSquare(1)}
-                {this.renderSquare(2)}
-            </div>
-            <div className="board-row">
-                {this.renderSquare(3)}
-                {this.renderSquare(4)}
-                {this.renderSquare(5)}
-            </div>
-            <div className="board-row">
-                {this.renderSquare(6)}
-                {this.renderSquare(7)}
-                {this.renderSquare(8)}
-            </div>
+            {this.renderBoard()}
             </div>
         );
     }
