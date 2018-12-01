@@ -11,7 +11,7 @@ export class Board extends Component {
     }
 
     renderSquare(i) {
-      return <Square value={i}/>;
+      return <Square value={i} size={Math.min(this.state.width,this.state.height)}/>;
     }
 
     renderBoard(){
