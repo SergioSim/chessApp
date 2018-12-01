@@ -27,7 +27,7 @@ export class Board extends Component {
     }
 
     updateDimentions(){
-        this.setState({width: window.innerWidth, height: window.innerHeight});
+        this.setState({width: window.innerWidth - 8, height: window.innerHeight - 8});
         console.log("updating window size...");
     }
 

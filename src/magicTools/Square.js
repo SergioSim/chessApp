@@ -11,7 +11,8 @@ export class Square extends Component {
     render() {
       const divStyle = {
         height: this.state.sqSize,
-        width: this.state.sqSize
+        width: this.state.sqSize,
+        background: this.props.value % 2 == 0 ? "#7d8796" : "#e8ebef" 
     };
       return (
         <div className="square" style={divStyle}>
