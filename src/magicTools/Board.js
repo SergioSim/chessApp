@@ -5,30 +5,44 @@ export class Board extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            width: 0,
-            height: 0
+            width: 5,
+            height: 0,
+            board: []
         };
     }
 
-    renderSquare(i) {
-      return <Square value={i} size={Math.min(this.state.width,this.state.height)}/>;
+    renderSquare = (i,key) => {
+        console.log(this.state.width);
+      return <Square key={key} value={i} size={Math.min(this.state.width,this.state.height)}/>;
     }
 
     renderBoard(){
         let table = [];
+        let key = 1;
         for (let i = 0; i<8; i++){
             let children = [];
             for(let j = 0; j<8; j++){
-                children.push(this.renderSquare(i+j));
+                children.push(this.renderSquare(i+j, key++));
             }
-          table.push(<div className="board-row">{children}</div>);
+          table.push(<div className="board-row" key={key++}>{children}</div>);
         }
-        return <div> {table} </div>;
+        this.setState({board: <div> {table} </div>});
+    }
+
+    reRenderBoard(){
+        if(this.state.board.length === 0) return;
+        this.state.board.props.children[1].forEach(children => {
+            children.props.children.forEach( child => {
+                child.type.getDerivedStateFromProps(
+                    {size:Math.min(this.state.width,this.state.height)},
+                    {});
+            })
+        });
     }
 
     updateDimentions(){
-        this.setState({width: window.innerWidth - 8, height: window.innerHeight - 8});
         console.log("updating window size...");
+        this.setState({width: window.innerWidth - 8, height: window.innerHeight - 8}, this.reRenderBoard());
     }
 
     componentWillMount(){
@@ -36,6 +50,7 @@ export class Board extends Component {
     }
 
     componentDidMount(){
+        this.renderBoard();
         window.addEventListener("resize", this.updateDimentions.bind(this));
     }
 
@@ -51,7 +66,7 @@ export class Board extends Component {
   
         return (
             <div style={divStyle}>
-            {this.renderBoard()}
+                {this.state.board}
             </div>
         );
     }

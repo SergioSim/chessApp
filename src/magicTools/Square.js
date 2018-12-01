@@ -4,19 +4,30 @@ export class Square extends Component {
   constructor(props) {
         super(props);
         this.state = {
-            sqSize: props.size / 8 - 3
+            sqSize: props.size,
+            sqValue: props.value
         };
+    }
+
+    static getDerivedStateFromProps(nextProps, prevState) {
+      console.log(nextProps);
+      return { size: nextProps.size};
+      }
+
+    componentDidUpdate(prevProps, prevState) {
+      console.log("prev Props then state");
+      this.setState({size: 10});
     }
 
     render() {
       const divStyle = {
-        height: this.state.sqSize,
-        width: this.state.sqSize,
-        background: this.props.value % 2 == 0 ? "#7d8796" : "#e8ebef" 
-    };
+        height: this.state.sqSize / 8 - 3,
+        width: this.state.sqSize / 8 - 3,
+        background: this.state.sqValue % 2 === 0 ? "#7d8796" : "#e8ebef" 
+      };
       return (
-        <div className="square" style={divStyle}>
-          {this.props.value}
+        <div ref={this.myRef} className="square" style={divStyle}>
+          {this.state.sqValue}
         </div>
       );
     }
