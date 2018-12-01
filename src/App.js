@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import {Game} from './magicTools/Game';
 
 class App extends Component {
   render() {
@@ -19,6 +20,7 @@ class App extends Component {
           >
             Learn React
           </a>
+          <Game />
         </header>
       </div>
     );
