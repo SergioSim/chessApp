@@ -12,7 +12,7 @@ export class Game extends Component {
   }
 
   updateDimentions(){
-    this.setState({width: window.innerWidth - 8, height: window.innerHeight - 8});
+    this.setState({width: window.innerWidth, height: window.innerHeight});
     console.log("updating dimensions...");
   }
 
@@ -31,14 +31,32 @@ export class Game extends Component {
       width: size,
       height:size
       };
+    const infoSize = this.state.width - size;
+    const infoStyle = {};
+    const fakeFloat = {float: "left"};
+    if(infoSize > 270 ){
+      infoStyle.float = "left";
+      fakeFloat.width = 0;
+      infoStyle.width = infoSize/2-30;
+    }else{
+      fakeFloat.margin = infoSize/4;
+    }
     return (
-      <div className="game">
-        <div className="game-board" style={divStyle}>
-          <Board />
-        </div>
-        <div className="game-info">
-          <div>{/* status */}</div>
-          <ol>{/* TODO */}</ol>
+      <div className="game-with-info">
+      <div className="game-info" style={infoStyle}>
+          <div><h3>Welcome</h3></div>
+          <h6>
+            This is My chess AI in develloppement ...
+          </h6>
+          <h6>
+              Why not calling it My Chess AI -> <h2>MyChAI</h2>
+          </h6>
+      </div>
+      <div className="game-info" style={fakeFloat}></div>
+        <div className="game">
+          <div className="game-board" style={divStyle}>
+            <Board />
+          </div>
         </div>
       </div>
     );

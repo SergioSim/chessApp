@@ -2,10 +2,6 @@ import React, { Component } from 'react';
 import pieces from '../lpieces.png';
 import spacer from '../spacer.png';
 
-/**
- * .stretchy .sprite
- */
-
 export class Square extends Component {
   constructor(props) {
         super(props);
@@ -24,7 +20,7 @@ export class Square extends Component {
 
     render() {
       const divStyle = {
-        background: (this.state.x + this.state.y) % 2 === 0 ? "#7d8796" : "#e8ebef",
+        background: (this.state.x + this.state.y) % 2 !== 0 ? "#7d8796" : "#e8ebef",
       };
       const spriteStyle = {
         top: this.pieceColor.black+"%",

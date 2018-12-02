@@ -1,9 +1,6 @@
 ol, ul {
   padding-left: 30px;
 }
-
-
-
 .status {
   margin-bottom: 10px;
 }
@@ -43,7 +40,10 @@ ol, ul {
 }
 
 .game-info {
-  margin-left: 20px;
+  margin-right: 20px;
+  margin-top: 0px;
+  margin-bottom: 0.5em;
+  padding-top: 0.5em;
 }
 
 .stretchy {
@@ -65,4 +65,7 @@ ol, ul {
   max-width:none; 
   height: 213%;
 }
-.stretchy .sprite .s2 {left:-100%;}
+
+.stretchy .sprite .s2 {
+  left:-100%;
+}
