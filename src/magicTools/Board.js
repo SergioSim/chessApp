@@ -6,24 +6,27 @@ export class Board extends Component {
         super(props);
         this.state = {
             width: 0,
-            height: 0
+            height: 0,
+            board: []
         };
     }
 
-    renderSquare(i) {
-      return <Square value={i} size={Math.min(this.state.width,this.state.height)}/>;
+    renderSquare(i, key) {
+      return <Square key={key} value={i} size={Math.min(this.state.width,this.state.height)}/>;
     }
 
     renderBoard(){
+        console.log(this.state.height);
         let table = [];
+        let key = 1;
         for (let i = 0; i<8; i++){
             let children = [];
             for(let j = 0; j<8; j++){
-                children.push(this.renderSquare(i+j));
+                children.push(this.renderSquare(i+j, key++));
             }
-          table.push(<div className="board-row">{children}</div>);
+          table.push(<div className="board-row" height={this.state.height / 8 - 3} key={key++}>{children}</div>);
         }
-        return <div> {table} </div>;
+        this.setState({board: <div> {table} </div>});
     }
 
     updateDimentions(){
@@ -36,11 +39,12 @@ export class Board extends Component {
     }
 
     componentDidMount(){
-        window.addEventListener("resize", this.updateDimentions.bind(this));
+        this.renderBoard();
+        window.addEventListener("resize", this.updateDimentions());
     }
 
     componentWillUnmount(){
-        window.removeEventListener("resize", this.updateDimentions.bind(this));
+        window.removeEventListener("resize", this.updateDimentions());
     }
   
     render() {
@@ -51,7 +55,7 @@ export class Board extends Component {
   
         return (
             <div style={divStyle}>
-            {this.renderBoard()}
+                {this.state.board}
             </div>
         );
     }
