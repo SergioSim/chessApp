@@ -47,7 +47,7 @@ ol, ul {
 }
 
 .stretchy {
-  display:block; 
+  display:flex; 
   float:left; 
   position:relative; 
   overflow:hidden;
@@ -62,9 +62,7 @@ ol, ul {
 }
 .stretchy .sprite {
   position:absolute; 
-  top: -17%;
-  left: 21%;
   max-width:none; 
-  height: 220%;
+  height: 213%;
 }
 .stretchy .sprite .s2 {left:-100%;}
