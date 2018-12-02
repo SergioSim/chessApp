@@ -23,7 +23,7 @@ export class Board extends Component {
             }
           table.push(<div className="board-row" key={key++}>{children}</div>);
         }
-        this.setState({board: <div> {table} </div>});
+        this.setState({board: <div className="chess-board"> {table} </div>});
     }
 
     componentDidMount(){
@@ -36,10 +36,7 @@ export class Board extends Component {
             width: this.state.width
         };
   
-        return (
-            <div style={divStyle}>
-                {this.state.board}
-            </div>
+        return (this.state.board
         );
     }
   }

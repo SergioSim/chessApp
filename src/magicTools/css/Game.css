@@ -2,11 +2,7 @@ ol, ul {
   padding-left: 30px;
 }
 
-.board-row:after {
-  clear: both;
-  content: "";
-  display: table;
-}
+
 
 .status {
   margin-bottom: 10px;
@@ -14,18 +10,16 @@ ol, ul {
 
 .square {
   border: 1px solid #999;
-  float: left;
-  font-size: 24px;
   font-weight: bold;
-  line-height: 34px;
   margin-right: -1px;
   margin-top: -1px;
   padding: 0;
   text-align: center;
+  height: calc(12.5% - 1px);
 }
 
 .board-row {
-  width: 100%;
+  flex: 8;
 }
 
 .square:focus {
@@ -37,7 +31,15 @@ ol, ul {
 }
 
 .game {
-  display: grid;
+  display: flex;
+}
+
+.chess-board {
+  height: 100%;
+  width: 100%;
+  right: 0;
+  top: 0;
+  display: flex;
 }
 
 .game-info {
