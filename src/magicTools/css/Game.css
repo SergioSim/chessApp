@@ -13,7 +13,6 @@ ol, ul {
 }
 
 .square {
-  background: #fff;
   border: 1px solid #999;
   float: left;
   font-size: 24px;
@@ -25,6 +24,10 @@ ol, ul {
   text-align: center;
 }
 
+.board-row {
+  width: 100%;
+}
+
 .square:focus {
   outline: none;
 }
@@ -34,10 +37,7 @@ ol, ul {
 }
 
 .game {
-  display: flex;
-  flex-direction: row;
-  width: 100%;
-  height: auto;
+  display: grid;
 }
 
 .game-info {
