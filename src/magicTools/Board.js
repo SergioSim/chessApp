@@ -16,10 +16,10 @@ export class Board extends Component {
     renderBoard(){
         let table = [];
         let key = 1;
-        for (let i = 0; i<8; i++){
+        for (let i = 1; i<9; i++){
             let children = [];
-            for(let j = 0; j<8; j++){
-                children.push(this.renderSquare(i+j, key++));
+            for(let j = 1; j<9; j++){
+                children.push(this.renderSquare(i+10*j, key++));
             }
           table.push(<div className="board-row" key={key++}>{children}</div>);
         }
@@ -31,12 +31,6 @@ export class Board extends Component {
     }
   
     render() {
-        const divStyle = {
-            height: this.state.height,
-            width: this.state.width
-        };
-  
-        return (this.state.board
-        );
+        return (this.state.board);
     }
   }
