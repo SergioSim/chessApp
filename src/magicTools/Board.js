@@ -13,7 +13,7 @@ export class Board extends Component {
       return <Square key={key} value={i}/>;
     }
 
-    renderBoard(){
+    render() {
         let table = [];
         let key = 1;
         for (let i = 1; i<9; i++){
@@ -23,14 +23,6 @@ export class Board extends Component {
             }
           table.push(<div className="board-row" key={key++}>{children}</div>);
         }
-        this.setState({board: <div className="chess-board"> {table} </div>});
-    }
-
-    componentDidMount(){
-        this.renderBoard();
-    }
-  
-    render() {
-        return (this.state.board);
+        return(<div className="chess-board"> {table} </div>);
     }
   }
