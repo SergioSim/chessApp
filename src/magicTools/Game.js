@@ -2,12 +2,15 @@ import React, { Component } from 'react';
 import {Board} from './Board';
 import './css/Game.css';
 
+export const GameContext = React.createContext();
+
 export class Game extends Component {
   constructor(props) {
     super(props);
     this.state = {
         width: 0,
-        height: 0
+        height: 0,
+        playerColor: "Black"
     };
   }
 
@@ -23,6 +26,10 @@ export class Game extends Component {
 
   componentWillUnmount(){
     window.removeEventListener("resize", this.updateDimentions.bind(this));
+  }
+
+  changePlayerColor(){
+    console.log(this.state.playerColor);
   }
 
   render() {
@@ -42,24 +49,26 @@ export class Game extends Component {
       fakeFloat.margin = infoSize/4;
     }
     return (
-      <div className="game-with-info">
-      <div className="game-info" style={infoStyle}>
-          <div><h3>Welcome</h3></div>
-          <h6>
-            This is My chess AI in develloppement ...
-          </h6>
-          <h6>
-              Why not calling it My Chess AI -> <h2>MyChAI</h2>
-          </h6>
-      </div>
-      <div className="game-info" style={fakeFloat}></div>
-        <div className="game">
-          <div className="game-board" style={divStyle}>
-            <Board />
+        <div className="game-with-info">
+        <div className="game-info" style={infoStyle}>
+          <div>
+            <h3>Welcome</h3></div>
+            <h6>This is My chess AI in developpement ...</h6>
+            <h6>Why not calling it My Chess AI -></h6>
+            <h2>MyChAI</h2>
+            <div className="menu">
+                <button onClick={() => this.changePlayerColor()}>Change to {this.state.playerColor}</button>
+            </div>
+          </div>
+        <div className="fake-info" style={fakeFloat}></div>
+          <div className="game">
+            <div className="game-board" style={divStyle}>
+              <GameContext.Provider value={this.state.playerColor}>
+                <Board />
+              </GameContext.Provider>
+            </div>
           </div>
         </div>
-      </div>
     );
   }
 }
-  

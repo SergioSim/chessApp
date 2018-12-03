@@ -8,7 +8,8 @@ export class Square extends Component {
         this.state = {
             value: props.value,
             x: props.value % 10,
-            y: (props.value - (props.value % 10)) / 10
+            y: (props.value - (props.value % 10)) / 10,
+            gameContext: props.gameContext
         };
         this.pieceColor = {white:-3, black:-113};
         this.pieceLeft = {pawn: 25, rock:-67, knight:-158, bishop:-252, queen:-344, king:-436};
@@ -16,6 +17,7 @@ export class Square extends Component {
 
     logCoords(){
       console.log(this.state.x + "|" + this.state.y );
+      console.log(this.state.gameContext);
     }
 
     render() {

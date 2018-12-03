@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {Square} from './Square';
+import {GameContext} from './Game'
 
 export class Board extends Component {
     constructor(props) {
@@ -10,7 +11,13 @@ export class Board extends Component {
     }
 
     renderSquare(i, key) {
-      return <Square key={key} value={i}/>;
+    return (
+        <GameContext.Consumer key={key}>
+        {(gameContext) => (
+            <Square value={i} gameContext={gameContext}/>
+        )}
+        </GameContext.Consumer>
+    );
     }
 
     render() {
