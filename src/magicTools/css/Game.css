@@ -53,6 +53,12 @@ ol, ul {
   overflow:hidden;
   width: 95%;
   pointer-events: none;
+  -webkit-touch-callout: none; 
+    -webkit-user-select: none; 
+     -khtml-user-select: none; 
+       -moz-user-select: none; 
+        -ms-user-select: none;
+            user-select: none;
 }
 .stretchy .spacer {
   width: 100%; 
