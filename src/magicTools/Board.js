@@ -1,58 +1,56 @@
 import React, { Component } from 'react';
 import {Square} from './Square';
+import {GameContext} from './Game'
 
 export class Board extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            width: 0,
-            height: 0
+            board: []
         };
-      }
-
-    renderSquare(i){
-      return <Square value={i}/>;
     }
 
-    createBoard(){
-        let table = [];
-        for (let i = 0; i < 8; i++){
-            let children = [];
-            for(let j = 0; i<8; j++){
-                children.push(this.renderSquare(i+j));
-            }
-          table.push(<div className="board-row">{children}</div>);
+    initPieces(x,y){
+        if(y > 2 && y < 7){
+            return "void"
         }
-        return table;
+        if(y === 7 || y === 2 ){
+            return "pawn"
+        }
+        return "king";
     }
 
-    updateDimentions(){
-        this.setState({width: window.innerWidth, height: window.innerHeight});
-        console.log("updating window size...");
+    initColors(y, playerColor){
+        console.log(playerColor);
+        if(y > 4){
+            return playerColor === "White" ? "white" : "black";
+        }else{
+            return playerColor === "White" ? "black" : "white";
+        }
     }
 
-    componentWillMount(){
-        this.updateDimentions();
-    }
-
-    componentDidMount(){
-        window.addEventListener("resize", this.updateDimentions.bind(this));
-    }
-
-    componentWillUnmount(){
-        window.removeEventListener("resize", this.updateDimentions.bind(this));
+    renderSquare(i, j, key) {
+    return (
+        <GameContext.Consumer key={key}>
+        {(gameContext) => (
+            <GameContext.Provider value={gameContext}>
+                <Square value={i + 10*j} gameContext={gameContext} piece={this.initPieces(i,j)} pieceColor={this.initColors(j, gameContext.playerColor)}/>
+            </GameContext.Provider>
+        )}
+        </GameContext.Consumer>
+    );
     }
 
     render() {
-        const divStyle = {
-            height: this.state.height,
-            width: this.state.width
-        };
-
-      return (
-        <div style={divStyle}>
-          
-        </div>
-      );
+        let table = [];
+        let key = 1;
+        for (let i = 1; i<9; i++){
+            let children = [];
+            for(let j = 1; j<9; j++){
+                children.push(this.renderSquare(i,j, key++));
+            }
+          table.push(<div className="board-row" key={key++}>{children}</div>);
+        }
+        return(<div className="chess-board"> {table} </div>);
     }
   }
