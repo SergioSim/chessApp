@@ -14,7 +14,9 @@ export class Board extends Component {
     return (
         <GameContext.Consumer key={key}>
         {(gameContext) => (
-            <Square value={i} gameContext={gameContext}/>
+            <GameContext.Provider value={gameContext}>
+                <Square value={i} gameContext={gameContext}/>
+            </GameContext.Provider>
         )}
         </GameContext.Consumer>
     );

@@ -29,7 +29,11 @@ export class Game extends Component {
   }
 
   changePlayerColor(){
-    console.log(this.state.playerColor);
+    this.setState({playerColor: this.getOpponentPlayerColor()},console.log(this.state.playerColor));
+  }
+
+  getOpponentPlayerColor(){
+    return this.state.playerColor === 'Black' ? 'White' : 'Black';
   }
 
   render() {
@@ -57,7 +61,7 @@ export class Game extends Component {
             <h6>Why not calling it My Chess AI -></h6>
             <h2>MyChAI</h2>
             <div className="menu">
-                <button onClick={() => this.changePlayerColor()}>Change to {this.state.playerColor}</button>
+                <button onClick={() => this.changePlayerColor()}>Change to {this.getOpponentPlayerColor()}</button>
             </div>
           </div>
         <div className="fake-info" style={fakeFloat}></div>
