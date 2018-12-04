@@ -6,23 +6,41 @@ import {GameContext} from './Game'
 export class Square extends Component {
   constructor(props) {
         super(props);
+        this.pieceColor = {white:-3, black:-113};
+        this.pieceLeft = {pawn: 25, rock:-67, knight:-158, bishop:-252, queen:-344, king:-413, void: 110};
+        this.gameContext = props.gameContext;
+        this.changePiece = this.changePiece.bind(this);
         this.state = {
             value: props.value,
             x: props.value % 10,
             y: (props.value - (props.value % 10)) / 10,
             piece: props.piece,
             pieceColor: props.pieceColor,
-            isSelected: false
+            isSelected: false,
+            changePiece: this.changePiece
         };
-        this.pieceColor = {white:-3, black:-113};
-        this.pieceLeft = {pawn: 25, rock:-67, knight:-158, bishop:-252, queen:-344, king:-413, void: 110};
-        this.gameContext = props.gameContext
+        
+        this.gameContext.piecesState[this.state.value] = this.state;
+  }
+
+  changePiece(piece){
+    this.setState({piece: piece});
+  }
+
+  move(x,y){
+    const hisId= y*10 +x;
+    console.log(hisId);
+    this.changePiece(this.gameContext.piecesState[hisId].piece);
+    this.gameContext.piecesState[hisId].changePiece('void');
+    this.setState({x: x});
+    this.setState({y: y});
   }
 
   logCoords(){
     console.log(this.state.x + "|" + this.state.y );
     console.log(this.state.piece);
-    console.log(this.state.pieceColor)
+    console.log(this.state.pieceColor);
+    console.log(this.gameContext);
     if(this.gameContext.selectedFigure.length === 0){
       //selecting
       if(this.state.piece !== "void"){
@@ -36,7 +54,7 @@ export class Square extends Component {
         this.gameContext.selectedFigure = [];
         this.setState({isSelected: false});
       }else{
-        //moving
+        this.move(this.gameContext.selectedFigure[0],this.gameContext.selectedFigure[1]);
       }
     }
     console.log(this.gameContext.selectedFigure);

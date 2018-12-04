@@ -20,11 +20,12 @@ export class Board extends Component {
         return "king";
     }
 
-    initColors(y){
+    initColors(y, playerColor){
+        console.log(playerColor);
         if(y > 4){
-            return "white";
+            return playerColor === "White" ? "white" : "black";
         }else{
-            return "black";
+            return playerColor === "White" ? "black" : "white";
         }
     }
 
@@ -33,7 +34,7 @@ export class Board extends Component {
         <GameContext.Consumer key={key}>
         {(gameContext) => (
             <GameContext.Provider value={gameContext}>
-                <Square value={i + 10*j} gameContext={gameContext} piece={this.initPieces(i,j)} pieceColor={this.initColors(j)}/>
+                <Square value={i + 10*j} gameContext={gameContext} piece={this.initPieces(i,j)} pieceColor={this.initColors(j, gameContext.playerColor)}/>
             </GameContext.Provider>
         )}
         </GameContext.Consumer>
