@@ -10,7 +10,8 @@ export class Square extends Component {
             value: props.value,
             x: props.value % 10,
             y: (props.value - (props.value % 10)) / 10,
-            piece: props.piece
+            piece: props.piece,
+            pieceColor: props.pieceColor
         };
         this.pieceColor = {white:-3, black:-113};
         this.pieceLeft = {pawn: 25, rock:-67, knight:-158, bishop:-252, queen:-344, king:-413, void: 110};
@@ -34,7 +35,7 @@ export class Square extends Component {
       background: (this.state.x + this.state.y) % 2 !== 0 ? "#7d8796" : "#e8ebef",
     };
     const spriteStyle = {
-      top: this.pieceColor.black+"%",
+      top: this.pieceColor[this.state.pieceColor]+"%",
       left: this.pieceLeft[this.state.piece]+"%"
     }
     return (

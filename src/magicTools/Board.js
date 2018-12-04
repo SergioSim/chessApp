@@ -10,8 +10,22 @@ export class Board extends Component {
         };
     }
 
-    initPieces(i,j){
+    initPieces(x,y){
+        if(y > 2 && y < 7){
+            return "void"
+        }
+        if(y == 7 || y == 2 ){
+            return "pawn"
+        }
         return "king";
+    }
+
+    initColors(y){
+        if(y > 4){
+            return "white";
+        }else{
+            return "black";
+        }
     }
 
     renderSquare(i, j, key) {
@@ -19,7 +33,7 @@ export class Board extends Component {
         <GameContext.Consumer key={key}>
         {(gameContext) => (
             <GameContext.Provider value={gameContext}>
-                <Square value={i + 10*j} gameContext={gameContext} piece={this.initPieces(i,j)}/>
+                <Square value={i + 10*j} gameContext={gameContext} piece={this.initPieces(i,j)} pieceColor={this.initColors(j)}/>
             </GameContext.Provider>
         )}
         </GameContext.Consumer>
