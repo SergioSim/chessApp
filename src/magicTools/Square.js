@@ -10,18 +10,20 @@ export class Square extends Component {
             value: props.value,
             x: props.value % 10,
             y: (props.value - (props.value % 10)) / 10,
+            piece: props.piece
         };
         this.pieceColor = {white:-3, black:-113};
-        this.pieceLeft = {pawn: 25, rock:-67, knight:-158, bishop:-252, queen:-344, king:-436};
+        this.pieceLeft = {pawn: 25, rock:-67, knight:-158, bishop:-252, queen:-344, king:-413, void: 110};
         this.gameContext = props.gameContext
   }
 
   logCoords(){
     console.log(this.state.x + "|" + this.state.y );
+    console.log(this.state.piece);
     console.log(this.gameContext);
   }
 
-  changeState(gameContext){
+  changeContext(gameContext){
     if(this.gameContext !== gameContext){
       this.gameContext = gameContext; 
     }
@@ -33,12 +35,11 @@ export class Square extends Component {
     };
     const spriteStyle = {
       top: this.pieceColor.black+"%",
-      left: this.pieceLeft.pawn+"%"
+      left: this.pieceLeft[this.state.piece]+"%"
     }
     return (
       <GameContext.Consumer>{(gameContext) => {
-        console.log(gameContext);
-        this.changeState(gameContext);
+        this.changeContext(gameContext);
         return(
           <div className="square" style={divStyle} onClick={() => this.logCoords()}>
           <div className="stretchy no-limit">

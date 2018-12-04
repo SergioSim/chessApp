@@ -67,7 +67,7 @@ export class Game extends Component {
         <div className="fake-info" style={fakeFloat}></div>
           <div className="game">
             <div className="game-board" style={divStyle}>
-              <GameContext.Provider value={this.state.playerColor}>
+              <GameContext.Provider value={{playerColor: this.state.playerColor, }}>
                 <Board />
               </GameContext.Provider>
             </div>

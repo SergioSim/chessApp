@@ -10,12 +10,16 @@ export class Board extends Component {
         };
     }
 
-    renderSquare(i, key) {
+    initPieces(i,j){
+        return "king";
+    }
+
+    renderSquare(i, j, key) {
     return (
         <GameContext.Consumer key={key}>
         {(gameContext) => (
             <GameContext.Provider value={gameContext}>
-                <Square value={i} gameContext={gameContext}/>
+                <Square value={i + 10*j} gameContext={gameContext} piece={this.initPieces(i,j)}/>
             </GameContext.Provider>
         )}
         </GameContext.Consumer>
@@ -28,7 +32,7 @@ export class Board extends Component {
         for (let i = 1; i<9; i++){
             let children = [];
             for(let j = 1; j<9; j++){
-                children.push(this.renderSquare(i+10*j, key++));
+                children.push(this.renderSquare(i,j, key++));
             }
           table.push(<div className="board-row" key={key++}>{children}</div>);
         }
