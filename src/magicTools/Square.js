@@ -11,7 +11,8 @@ export class Square extends Component {
             x: props.value % 10,
             y: (props.value - (props.value % 10)) / 10,
             piece: props.piece,
-            pieceColor: props.pieceColor
+            pieceColor: props.pieceColor,
+            isSelected: false
         };
         this.pieceColor = {white:-3, black:-113};
         this.pieceLeft = {pawn: 25, rock:-67, knight:-158, bishop:-252, queen:-344, king:-413, void: 110};
@@ -21,7 +22,24 @@ export class Square extends Component {
   logCoords(){
     console.log(this.state.x + "|" + this.state.y );
     console.log(this.state.piece);
-    console.log(this.gameContext);
+    console.log(this.state.pieceColor)
+    if(this.gameContext.selectedFigure.length === 0){
+      //selecting
+      if(this.state.piece !== "void"){
+        // only if its a figure
+        this.gameContext.selectedFigure = [this.state.x, this.state.y];
+        this.setState({isSelected: true});
+      }
+    }else{
+      if(this.gameContext.selectedFigure[0] === this.state.x && this.gameContext.selectedFigure[1] === this.state.y){
+        //unselecting
+        this.gameContext.selectedFigure = [];
+        this.setState({isSelected: false});
+      }else{
+        //moving
+      }
+    }
+    console.log(this.gameContext.selectedFigure);
   }
 
   changeContext(gameContext){
@@ -32,7 +50,7 @@ export class Square extends Component {
 
   render() {
     const divStyle = {
-      background: (this.state.x + this.state.y) % 2 !== 0 ? "#7d8796" : "#e8ebef",
+      background: !this.state.isSelected ? (this.state.x + this.state.y) % 2 !== 0 ? "#7d8796" : "#e8ebef" : "#5bd75b",
     };
     const spriteStyle = {
       top: this.pieceColor[this.state.pieceColor]+"%",

@@ -10,7 +10,8 @@ export class Game extends Component {
     this.state = {
         width: 0,
         height: 0,
-        playerColor: "Black"
+        playerColor: "Black",
+        selectedFigure: []
     };
   }
 
@@ -45,7 +46,7 @@ export class Game extends Component {
     const infoSize = this.state.width - size;
     const infoStyle = {};
     const fakeFloat = {float: "left"};
-    if(infoSize > 270 ){
+    if(infoSize > 300 ){
       infoStyle.float = "left";
       fakeFloat.width = 0;
       infoStyle.width = infoSize/2-30;
@@ -67,7 +68,7 @@ export class Game extends Component {
         <div className="fake-info" style={fakeFloat}></div>
           <div className="game">
             <div className="game-board" style={divStyle}>
-              <GameContext.Provider value={{playerColor: this.state.playerColor, }}>
+              <GameContext.Provider value={{playerColor: this.state.playerColor, selectedFigure: this.state.selectedFigure }}>
                 <Board />
               </GameContext.Provider>
             </div>

@@ -14,7 +14,7 @@ export class Board extends Component {
         if(y > 2 && y < 7){
             return "void"
         }
-        if(y == 7 || y == 2 ){
+        if(y === 7 || y === 2 ){
             return "pawn"
         }
         return "king";
