@@ -51,7 +51,8 @@ ol, ul {
   float:left; 
   position:relative; 
   overflow:hidden;
-  width: 95%
+  width: 95%;
+  pointer-events: none;
 }
 .stretchy .spacer {
   width: 100%; 
