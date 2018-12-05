@@ -10,21 +10,29 @@ export class Square extends Component {
 
   constructor(props) {
         super(props);
+        this.changePiece = this.changePiece.bind(this);
+        this.gameContext = props.gameContext;
         this.state = {
             value: props.value,
             x: props.value % 10,
             y: (props.value - (props.value % 10)) / 10,
             piece: props.piece,
             pieceColor: props.pieceColor,
-            isSelected: false
+            isSelected: false,
+            changePiece: this.changePiece
         };
-        this.gameContext = props.gameContext
+        this.gameContext.piecesState[this.state.value] = this.state;
+  }
+
+  changePiece(piece){
+    this.setState(piece);
   }
 
   logCoords(){
     console.log(this.state.x + "|" + this.state.y );
     console.log(this.state.piece);
-    console.log(this.state.pieceColor)
+    console.log(this.state.pieceColor);
+    console.log(this.gameContext);
     if(this.gameContext.selectedFigure.length === 0){
       //selecting
       if(this.state.piece !== "void"){

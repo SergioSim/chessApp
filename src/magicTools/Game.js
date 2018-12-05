@@ -11,7 +11,8 @@ export class Game extends Component {
         width: 0,
         height: 0,
         playerColor: "Black",
-        selectedFigure: []
+        selectedFigure: [],
+        piecesState: []
     };
   }
 
@@ -68,7 +69,10 @@ export class Game extends Component {
         <div className="fake-info" style={fakeFloat}></div>
           <div className="game">
             <div className="game-board" style={divStyle}>
-              <GameContext.Provider value={{playerColor: this.state.playerColor, selectedFigure: this.state.selectedFigure }}>
+              <GameContext.Provider value={{
+                playerColor: this.state.playerColor, 
+                selectedFigure: this.state.selectedFigure,
+                piecesState: this.state.piecesState }}>
                 <Board />
               </GameContext.Provider>
             </div>
