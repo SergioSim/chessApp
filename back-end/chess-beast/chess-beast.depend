@@ -1,0 +1,20 @@
+# depslib dependency file v1.0
+1544036696 source:/home/katzenmaul/Desktop/mbds/chess/back-end/chess-beast/main.cpp
+	<boost/beast/core.hpp>
+	<boost/beast/websocket.hpp>
+	<boost/asio/ip/tcp.hpp>
+	<boost/algorithm/string.hpp>
+	<cstdlib>
+	<functional>
+	<iostream>
+	<string>
+	<thread>
+	<vector>
+	"ChessGame.h"
+
+1544036652 source:/home/katzenmaul/Desktop/mbds/chess/back-end/chess-beast/src/ChessGame.cpp
+	"ChessGame.h"
+
+1544036863 /home/katzenmaul/Desktop/mbds/chess/back-end/chess-beast/src/ChessGame.h
+	<ostream>
+
