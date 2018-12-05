@@ -21,10 +21,11 @@ export class Board extends Component {
     }
 
     initColors(y){
+        //TODO resolve color issue!
         if(y > 4){
-            return "white";
-        }else{
             return "black";
+        }else{
+            return "white";
         }
     }
 
