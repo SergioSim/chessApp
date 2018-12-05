@@ -4,6 +4,10 @@ import spacer from '../spacer.png';
 import {GameContext} from './Game'
 
 export class Square extends Component {
+
+  static pieceColor = {white:-3, black:-113};
+  static pieceLeft = {pawn: 25, rock:-67, knight:-158, bishop:-252, queen:-344, king:-413, void: 110};
+
   constructor(props) {
         super(props);
         this.state = {
@@ -14,8 +18,6 @@ export class Square extends Component {
             pieceColor: props.pieceColor,
             isSelected: false
         };
-        this.pieceColor = {white:-3, black:-113};
-        this.pieceLeft = {pawn: 25, rock:-67, knight:-158, bishop:-252, queen:-344, king:-413, void: 110};
         this.gameContext = props.gameContext
   }
 
@@ -53,8 +55,8 @@ export class Square extends Component {
       background: !this.state.isSelected ? (this.state.x + this.state.y) % 2 !== 0 ? "#7d8796" : "#e8ebef" : "#5bd75b",
     };
     const spriteStyle = {
-      top: this.pieceColor[this.state.pieceColor]+"%",
-      left: this.pieceLeft[this.state.piece]+"%"
+      top: Square.pieceColor[this.state.pieceColor]+"%",
+      left: Square.pieceLeft[this.state.piece]+"%"
     }
     return (
       <GameContext.Consumer>{(gameContext) => {
