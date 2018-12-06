@@ -25,14 +25,29 @@ export class Square extends Component {
   }
 
   changePiece(piece){
-    this.setState(piece);
+    this.setState(piece, ()=>{
+      console.log(this.state);
+      this.gameContext.piecesState[this.state.value] = this.state});
+  }
+
+  move(x,y){
+    const aValue = 10 * y + x;
+    const aPiece = this.gameContext.piecesState[aValue];
+    this.setState({
+      piece:aPiece.piece, 
+      pieceColor: aPiece.pieceColor, 
+      isSelected:false
+    }, () => {this.gameContext.piecesState[this.state.value] = this.state});
+    this.gameContext.piecesState[aValue].changePiece({
+      isSelected: false,
+      piece: "void"
+    });
   }
 
   logCoords(){
     console.log(this.state.x + "|" + this.state.y );
-    console.log(this.state.piece);
-    console.log(this.state.pieceColor);
-    console.log(this.gameContext);
+    console.log(this.state);
+    //console.log(this.gameContext);
     if(this.gameContext.selectedFigure.length === 0){
       //selecting
       if(this.state.piece !== "void"){
@@ -46,7 +61,8 @@ export class Square extends Component {
         this.gameContext.selectedFigure = [];
         this.setState({isSelected: false});
       }else{
-        //moving
+        this.move(this.gameContext.selectedFigure[0],this.gameContext.selectedFigure[1]);
+        this.gameContext.selectedFigure = [];
       }
     }
     console.log(this.gameContext.selectedFigure);
