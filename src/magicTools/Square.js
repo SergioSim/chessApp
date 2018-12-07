@@ -45,20 +45,21 @@ export class Square extends Component {
 
   logCoords(){
     console.log(this.state.x + "|" + this.state.y );
-    console.log(this.state);
-    //console.log(this.gameContext);
+    console.log(this.gameContext);
     if(this.gameContext.selectedFigure.length === 0){
       //selecting
       if(this.state.piece !== "void" && this.state.pieceColor === this.gameContext.playerMove){
         // only if its a figure
         this.gameContext.selectedFigure = [this.state.x, this.state.y];
         this.setState({isSelected: true});
+        this.gameContext.piecesState[this.state.value].isSelected = true;
       }
     }else{
       if(this.gameContext.selectedFigure[0] === this.state.x && this.gameContext.selectedFigure[1] === this.state.y){
         //unselecting
         this.gameContext.selectedFigure = [];
         this.setState({isSelected: false});
+        this.gameContext.piecesState[this.state.value].isSelected = false;
       }else{
         this.move(this.gameContext.selectedFigure[0],this.gameContext.selectedFigure[1]);
         this.gameContext.selectedFigure = [];
@@ -70,7 +71,12 @@ export class Square extends Component {
 
   changeContext(gameContext){
     if(this.gameContext !== gameContext){
-      this.gameContext = gameContext; 
+      const aSelectedFigure = this.gameContext.selectedFigure;
+      gameContext.playerMove = this.gameContext.playerMove;
+      this.gameContext = gameContext;
+      if(aSelectedFigure.length !== 0){
+        this.gameContext.selectedFigure = [9 - aSelectedFigure[0],9 - aSelectedFigure[1]];
+      }
     }
   }
 

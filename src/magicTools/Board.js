@@ -69,7 +69,9 @@ export class Board extends Component {
             this.gameContext = gameContext;
         }else{
             if(this.gameContext.playerColor !== gameContext.playerColor){
+                //console.log(this.gameContext);
                 this.switchBoard();
+                //console.log(this.gameContext);
                 this.gameContext.playerColor = gameContext.playerColor;
             }
         }
