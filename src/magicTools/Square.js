@@ -49,7 +49,7 @@ export class Square extends Component {
     //console.log(this.gameContext);
     if(this.gameContext.selectedFigure.length === 0){
       //selecting
-      if(this.state.piece !== "void"){
+      if(this.state.piece !== "void" && this.state.pieceColor === this.gameContext.playerMove){
         // only if its a figure
         this.gameContext.selectedFigure = [this.state.x, this.state.y];
         this.setState({isSelected: true});
@@ -62,6 +62,7 @@ export class Square extends Component {
       }else{
         this.move(this.gameContext.selectedFigure[0],this.gameContext.selectedFigure[1]);
         this.gameContext.selectedFigure = [];
+        this.gameContext.playerMove = this.gameContext.playerMove === "black" ? "white" : "black";
       }
     }
     console.log(this.gameContext.selectedFigure);
