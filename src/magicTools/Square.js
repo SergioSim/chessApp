@@ -26,7 +26,6 @@ export class Square extends Component {
 
   changePiece(piece){
     this.setState(piece, ()=>{
-      console.log(this.state);
       this.gameContext.piecesState[this.state.value] = this.state});
   }
 
