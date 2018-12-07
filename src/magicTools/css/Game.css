@@ -47,7 +47,7 @@ ol, ul {
 }
 
 .stretchy {
-  display:flex; 
+  display: grid;
   float:left; 
   position:relative; 
   overflow:hidden;
