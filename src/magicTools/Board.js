@@ -11,13 +11,13 @@ export class Board extends Component {
     }
 
     initPieces(x,y){
-        if(y > 2 && y < 7){
-            return "void"
-        }
-        if(y === 7 || y === 2 ){
-            return "pawn"
-        }
-        return "king";
+        if(y > 2 && y < 7){return "void"}
+        if(y === 7 || y === 2 ){return "pawn"}
+        if(x === 1 || x === 8){return "rock"}
+        if(x === 2 || x === 7){return "knight"}
+        if(x === 3 || x === 6){return "bishop"}
+        if(x === 5){return "queen"}
+        return "king"
     }
 
     initColors(y){

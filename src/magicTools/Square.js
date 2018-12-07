@@ -6,7 +6,7 @@ import {GameContext} from './Game'
 export class Square extends Component {
 
   static pieceColor = {white:-3, black:-113};
-  static pieceLeft = {pawn: 25, rock:-67, knight:-158, bishop:-252, queen:-344, king:-413, void: 110};
+  static pieceLeft = {pawn: 25, rock:-67, knight:-158, bishop:-239, queen:-327, king:-413, void: 110};
 
   constructor(props) {
         super(props);
