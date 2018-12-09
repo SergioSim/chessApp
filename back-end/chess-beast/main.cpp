@@ -39,7 +39,6 @@ void do_session(tcp::socket& socket)
     {
         // Construct the stream by moving in the socket
         websocket::stream<tcp::socket> ws{std::move(socket)};
-        // Accept the websocket handshake
         ws.accept();
         ChessGame cg = ChessGame();
         for(;;)

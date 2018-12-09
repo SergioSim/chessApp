@@ -34,15 +34,22 @@ export class Square extends Component {
     const aPiece = this.gameContext.piecesState[aValue];
     const pieceColor = aPiece.pieceColor === "white" ? "W":"B"
     this.gameContext.socket.send(pieceColor+ "," + x + "," + y + "," + this.state.x + "," + this.state.y);
-    this.setState({
-      piece:aPiece.piece, 
-      pieceColor: aPiece.pieceColor, 
-      isSelected:false
-    }, () => {this.gameContext.piecesState[this.state.value] = this.state});
-    this.gameContext.piecesState[aValue].changePiece({
-      isSelected: false,
-      piece: "void"
-    });
+    this.gameContext.socket.onmessage = (resp) => {
+      if(resp.data === "1"){
+        this.setState({
+          piece:aPiece.piece, 
+          pieceColor: aPiece.pieceColor, 
+          isSelected:false
+        }, () => {this.gameContext.piecesState[this.state.value] = this.state});
+        this.gameContext.piecesState[aValue].changePiece({
+          isSelected: false,
+          piece: "void"
+        });
+        this.gameContext.selectedFigure = [];
+        this.gameContext.playerMove = this.gameContext.playerMove === "black" ? "white" : "black";
+      }
+      console.log(resp);
+    };
   }
 
   logCoords(){
@@ -64,8 +71,6 @@ export class Square extends Component {
         this.gameContext.piecesState[this.state.value].isSelected = false;
       }else{
         this.move(this.gameContext.selectedFigure[0],this.gameContext.selectedFigure[1]);
-        this.gameContext.selectedFigure = [];
-        this.gameContext.playerMove = this.gameContext.playerMove === "black" ? "white" : "black";
       }
     }
     console.log(this.gameContext.selectedFigure);
