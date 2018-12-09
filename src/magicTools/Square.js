@@ -33,7 +33,11 @@ export class Square extends Component {
     const aValue = 10 * y + x;
     const aPiece = this.gameContext.piecesState[aValue];
     const pieceColor = aPiece.pieceColor === "white" ? "W":"B"
-    this.gameContext.socket.send(pieceColor+ "," + x + "," + y + "," + this.state.x + "," + this.state.y);
+    if(this.gameContext.playerColor === "Black"){
+      this.gameContext.socket.send(pieceColor+ "," + x + "," + y + "," + this.state.x + "," + this.state.y);
+    }else{
+      this.gameContext.socket.send(pieceColor+ "," + (9-x) + "," + (9-y) + "," + (9-this.state.x) + "," + (9-this.state.y));
+    }
     this.gameContext.socket.onmessage = (resp) => {
       if(resp.data === "1"){
         this.setState({
