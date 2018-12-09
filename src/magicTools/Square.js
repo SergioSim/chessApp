@@ -32,6 +32,8 @@ export class Square extends Component {
   move(x,y){
     const aValue = 10 * y + x;
     const aPiece = this.gameContext.piecesState[aValue];
+    const pieceColor = aPiece.pieceColor === "white" ? "W":"B"
+    this.gameContext.socket.send(pieceColor+ "," + x + "," + y + "," + this.state.x + "," + this.state.y);
     this.setState({
       piece:aPiece.piece, 
       pieceColor: aPiece.pieceColor, 

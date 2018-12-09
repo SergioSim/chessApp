@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1544036696 source:/home/katzenmaul/Desktop/mbds/chess/back-end/chess-beast/main.cpp
+1544372433 source:/home/katzenmaul/Desktop/mbds/chess/back-end/chess-beast/main.cpp
 	<boost/beast/core.hpp>
 	<boost/beast/websocket.hpp>
 	<boost/asio/ip/tcp.hpp>
@@ -11,10 +11,76 @@
 	<thread>
 	<vector>
 	"ChessGame.h"
+	"ChessBoard.h"
+	"ChessEnum.h"
+	"ChessBoardCase.h"
+	"Pawn.h"
 
-1544036652 source:/home/katzenmaul/Desktop/mbds/chess/back-end/chess-beast/src/ChessGame.cpp
+1544372273 source:/home/katzenmaul/Desktop/mbds/chess/back-end/chess-beast/src/ChessGame.cpp
 	"ChessGame.h"
+	<iostream>
+	"ChessEnum.h"
 
 1544036863 /home/katzenmaul/Desktop/mbds/chess/back-end/chess-beast/src/ChessGame.h
 	<ostream>
+
+1544362492 /home/katzenmaul/Desktop/mbds/chess/back-end/chess-beast/include/ChessGame.h
+	<ostream>
+	"ChessBoard.h"
+	"ChessPlayer.h"
+
+1544372099 source:/home/katzenmaul/Desktop/mbds/chess/back-end/chess-beast/src/ChessBoard.cpp
+	<iostream>
+	"ChessBoard.h"
+
+1544372023 /home/katzenmaul/Desktop/mbds/chess/back-end/chess-beast/include/ChessBoard.h
+	<ostream>
+	<vector>
+	"ChessBoardCase.h"
+
+1544369663 /home/katzenmaul/Desktop/mbds/chess/back-end/chess-beast/include/ChessPiece.h
+	<ostream>
+	<vector>
+	<string>
+	"ChessEnum.h"
+	"ChessBoard.h"
+
+1544353851 /home/katzenmaul/Desktop/mbds/chess/back-end/chess-beast/include/ChessEnum.h
+
+1544371891 /home/katzenmaul/Desktop/mbds/chess/back-end/chess-beast/include/ChessBoardCase.h
+	<vector>
+	<ostream>
+	"ChessPiece.h"
+
+1544371388 source:/home/katzenmaul/Desktop/mbds/chess/back-end/chess-beast/src/ChessPiece.cpp
+	"ChessPiece.h"
+	<iostream>
+	<vector>
+
+1544371926 source:/home/katzenmaul/Desktop/mbds/chess/back-end/chess-beast/src/ChessBoardCase.cpp
+	<iostream>
+	"ChessBoardCase.h"
+	<algorithm>
+
+1544369732 source:/home/katzenmaul/Desktop/mbds/chess/back-end/chess-beast/src/Pawn.cpp
+	"Pawn.h"
+	<iostream>
+	<cmath>
+	"ChessEnum.h"
+
+1544369671 /home/katzenmaul/Desktop/mbds/chess/back-end/chess-beast/include/Pawn.h
+	<ostream>
+	"ChessPiece.h"
+
+1544370727 /home/katzenmaul/Desktop/mbds/chess/back-end/chess-beast/include/ChessPlayer.h
+	<string>
+	<ostream>
+	<vector>
+	"ChessBoard.h"
+
+1544372265 source:/home/katzenmaul/Desktop/mbds/chess/back-end/chess-beast/src/ChessPlayer.cpp
+	"ChessPlayer.h"
+	<Pawn.h>
+	<iostream>
+	<algorithm>
 

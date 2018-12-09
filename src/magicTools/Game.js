@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import {Board} from './Board';
 import './css/Game.css';
+import openSocket from 'socket.io-client';
+
+//npm i --save socket.io
 
 export const GameContext = React.createContext();
 
@@ -13,7 +16,8 @@ export class Game extends Component {
         playerColor: "Black",
         playerMove: "white",
         selectedFigure: [],
-        piecesState: []
+        piecesState: [],
+        socket: new WebSocket('ws://192.168.0.48:8082', ['soap', 'xmpp'])
     };
   }
 
@@ -25,6 +29,9 @@ export class Game extends Component {
   componentDidMount(){
     this.updateDimentions();
     window.addEventListener("resize", this.updateDimentions.bind(this));
+    this.state.socket.onopen = function () {
+      this.state.socket.send('Ping');
+      }.bind(this);
   }
 
   componentWillUnmount(){
@@ -74,7 +81,8 @@ export class Game extends Component {
                 playerColor: this.state.playerColor, 
                 selectedFigure: this.state.selectedFigure,
                 piecesState: this.state.piecesState,
-                playerMove: this.state.playerMove }}>
+                playerMove: this.state.playerMove,
+                socket: this.state.socket}}>
                 <Board />
               </GameContext.Provider>
             </div>

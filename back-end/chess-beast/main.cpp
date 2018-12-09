@@ -9,6 +9,10 @@
 #include <thread>
 #include <vector>
 #include "ChessGame.h"
+#include "ChessBoard.h"
+#include "ChessEnum.h"
+#include "ChessBoardCase.h"
+#include "Pawn.h"
 
 using tcp = boost::asio::ip::tcp;
 namespace websocket = boost::beast::websocket;
@@ -20,8 +24,7 @@ std::string messageListener(ChessGame& cg, std::string s)
     boost::split(results, s, [](char c){return c == ',';});
     if(results.size() == 5){
         std::string::size_type sz;
-        int positionsArray[4] = {std::stoi(results[1],&sz),std::stoi(results[2],&sz),std::stoi(results[3],&sz),std::stoi(results[4],&sz)};
-        bool b = cg.movePiece(results[0][0], positionsArray);
+        bool b = cg.movePiece(results[0][0], std::stoi(results[1],&sz),std::stoi(results[2],&sz),std::stoi(results[3],&sz),std::stoi(results[4],&sz));
         std::cout << cg << std::endl;
         return b ? "1":"0";
     }else{
@@ -72,7 +75,7 @@ void do_session(tcp::socket& socket)
     }
 }
 
-int main()
+int startServer()
 {
     try
     {
@@ -100,5 +103,14 @@ int main()
         std::cerr << "Error: " << e.what() << std::endl;
         return EXIT_FAILURE;
     }
+}
+
+int main()
+{
+    startServer();
+//    ChessGame cg = ChessGame();
+//    cout << cg << endl;
+//    cout << cg.movePiece('W', 5 ,2 , 5, 3)<< endl;
+//    cout << cg << endl;
     return 0;
 }

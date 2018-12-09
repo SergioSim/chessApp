@@ -12,10 +12,12 @@
 				<Option type="1" />
 				<Option compiler="gcc" />
 				<Compiler>
+					<Add option="-Weffc++" />
 					<Add option="-Wextra" />
 					<Add option="-Wall" />
 					<Add option="-g" />
 					<Add directory="src" />
+					<Add directory="include" />
 				</Compiler>
 				<Linker>
 					<Add option="-lboost_system" />
@@ -30,6 +32,7 @@
 				<Compiler>
 					<Add option="-O2" />
 					<Add directory="src" />
+					<Add directory="include" />
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
@@ -40,9 +43,18 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
+		<Unit filename="include/ChessBoard.h" />
+		<Unit filename="include/ChessBoardCase.h" />
+		<Unit filename="include/ChessEnum.h" />
+		<Unit filename="include/ChessGame.h" />
+		<Unit filename="include/ChessPiece.h" />
+		<Unit filename="include/Pawn.h" />
 		<Unit filename="main.cpp" />
+		<Unit filename="src/ChessBoard.cpp" />
+		<Unit filename="src/ChessBoardCase.cpp" />
 		<Unit filename="src/ChessGame.cpp" />
-		<Unit filename="src/ChessGame.h" />
+		<Unit filename="src/ChessPiece.cpp" />
+		<Unit filename="src/Pawn.cpp" />
 		<Extensions>
 			<envvars />
 			<code_completion />
