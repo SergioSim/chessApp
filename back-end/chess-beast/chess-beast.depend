@@ -78,11 +78,12 @@
 	<vector>
 	"ChessBoard.h"
 
-1544458049 source:/home/katzenmaul/Desktop/mbds/chess/back-end/chess-beast/src/ChessPlayer.cpp
+1544459468 source:/home/katzenmaul/Desktop/mbds/chess/back-end/chess-beast/src/ChessPlayer.cpp
 	"ChessPlayer.h"
 	"Pawn.h"
 	"Rock.h"
 	"Knight.h"
+	"Bishop.h"
 	<iostream>
 	<algorithm>
 
@@ -110,6 +111,16 @@
 	"ChessEnum.h"
 
 1544459096 /home/katzenmaul/Desktop/mbds/chess/back-end/chess-beast/include/Bishop.h
+	<ostream>
+	"ChessPiece.h"
+
+1544460231 source:/home/katzenmaul/Desktop/mbds/chess/back-end/chess-beast/src/Queen.cpp
+	"Queen.h"
+	<iostream>
+	<cmath>
+	"ChessEnum.h"
+
+1544460039 /home/katzenmaul/Desktop/mbds/chess/back-end/chess-beast/include/Queen.h
 	<ostream>
 	"ChessPiece.h"
 

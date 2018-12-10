@@ -3,6 +3,7 @@
 #include "Rock.h"
 #include "Knight.h"
 #include "Bishop.h"
+#include "Queen.h"
 #include <iostream>
 #include <algorithm>
 
@@ -13,7 +14,7 @@ using namespace std;
 ChessPlayer::ChessPlayer(int playerColor, ChessBoard& theChessBoard, vector<string>& history) : _playerColor(playerColor),
     _myChessBoard(theChessBoard), _myPieces(), _history(history), _isCheck(false)
 {
-    _myPieces.resize(14);
+    _myPieces.resize(15);
     int pawnY = (playerColor == 1) ? 7:2;
     for(int i = 0 ; i < 8 ; i++){
         _myPieces[i] = new Pawn(playerColor, i + 1, pawnY, theChessBoard);
@@ -26,10 +27,12 @@ ChessPlayer::ChessPlayer(int playerColor, ChessBoard& theChessBoard, vector<stri
     _myPieces[11] = new Knight(playerColor, 7, rockY, theChessBoard);
     _myPieces[12] = new Bishop(playerColor, 3, rockY, theChessBoard);
     _myPieces[13] = new Bishop(playerColor, 6, rockY, theChessBoard);
+    _myPieces[14] = new Queen(playerColor, 5, rockY, theChessBoard);
     _myPieces[10]->computeMove();
     _myPieces[11]->computeMove();
     _myPieces[12]->computeMove();
     _myPieces[13]->computeMove();
+    _myPieces[14]->computeMove();
 }
 
 ChessPlayer::~ChessPlayer() {
