@@ -17,7 +17,9 @@ ChessPlayer::ChessPlayer(int playerColor, ChessBoard& theChessBoard) : _playerCo
 }
 
 ChessPlayer::~ChessPlayer() {
-    //dtor
+    for(unsigned int i = 0 ; i < _myPieces.size() ; i++){
+        delete _myPieces[i];
+    }
 }
 
 ChessBoard ChessPlayer::getChessBoard() const{

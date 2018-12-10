@@ -107,9 +107,9 @@ int startServer()
 int main()
 {
     startServer();
-//    ChessGame cg = ChessGame();
-//    cout << cg << endl;
-//    cout << cg.movePiece('W', 5 ,2 , 5, 3)<< endl;
-//    cout << cg << endl;
+    ChessGame cg = ChessGame();
+    cout << cg << endl;
+    cout << cg.movePiece('W', 5 ,2 , 5, 3)<< endl;
+    cout << cg << endl;
     return 0;
 }
