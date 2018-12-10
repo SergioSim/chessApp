@@ -87,6 +87,14 @@ ChessPiece::ChessPiece(const ChessPiece& cp)
       return _y;
   }
 
+  bool ChessPiece::isOnBoard(int x, int y)
+  {
+    if(x>=1 && x<=8 && y>=1 && y<=8){
+        return true;
+    }
+    return false;
+  }
+
 ChessPiece& ChessPiece::operator=(const ChessPiece& cp)
 {
     cout << "Chess piece assignment called!";

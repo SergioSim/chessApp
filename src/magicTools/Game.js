@@ -17,7 +17,7 @@ export class Game extends Component {
         selectedFigure: [],
         piecesState: []
     };
-    this.socket = new WebSocket('ws://192.168.2.24:8082', ['soap', 'xmpp'], true);
+    this.socket = new WebSocket('ws://192.168.0.44:8082');
   }
 
   updateDimentions(){

@@ -39,4 +39,5 @@ void Pawn::computeMove(){
             }
         }
     }
+    _chessboard.addAttacks(*this);
 }

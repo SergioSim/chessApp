@@ -37,4 +37,5 @@ void Bishop::computeMove(){
     goBishop(_pieceMovePositions, _pieceAttackPositions, _chessboard, _pieceColor, _x, _y, -1, -1);
     goBishop(_pieceMovePositions, _pieceAttackPositions, _chessboard, _pieceColor, _x, _y, -1,  1);
     goBishop(_pieceMovePositions, _pieceAttackPositions, _chessboard, _pieceColor, _x, _y, 1, -1);
+    _chessboard.addAttacks(*this);
 }

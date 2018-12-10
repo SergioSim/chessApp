@@ -13,6 +13,7 @@ class ChessPlayer
         bool movePiece(int x1, int y1, int x2, int y2);
         void isCheckFunct();
         void computeMove();
+        void computeKing();
         virtual ~ChessPlayer();
         ChessBoard getChessBoard() const;
 

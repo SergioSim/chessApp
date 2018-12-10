@@ -31,6 +31,7 @@ bool ChessGame::movePiece(char color, int x1, int y1, int x2, int y2){
         {
             _Bplayer.computeMove();
             _Wplayer.computeMove();
+            _Bplayer.computeKing();
             //_Bplayer.isCheckFunct();
             //_Wplayer.isCheckFunct();
             _isBlacksTurn = !_isBlacksTurn;

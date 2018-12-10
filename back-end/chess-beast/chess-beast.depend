@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1544457587 source:/home/katzenmaul/Desktop/mbds/chess/back-end/chess-beast/main.cpp
+1544475265 source:/home/katzenmaul/Desktop/mbds/chess/back-end/chess-beast/main.cpp
 	<boost/beast/core.hpp>
 	<boost/beast/websocket.hpp>
 	<boost/asio/ip/tcp.hpp>
@@ -16,7 +16,7 @@
 	"ChessBoardCase.h"
 	"Pawn.h"
 
-1544440981 source:/home/katzenmaul/Desktop/mbds/chess/back-end/chess-beast/src/ChessGame.cpp
+1544477078 source:/home/katzenmaul/Desktop/mbds/chess/back-end/chess-beast/src/ChessGame.cpp
 	"ChessGame.h"
 	<iostream>
 	"ChessEnum.h"
@@ -38,7 +38,7 @@
 	<vector>
 	"ChessBoardCase.h"
 
-1544440115 /home/katzenmaul/Desktop/mbds/chess/back-end/chess-beast/include/ChessPiece.h
+1544461944 /home/katzenmaul/Desktop/mbds/chess/back-end/chess-beast/include/ChessPiece.h
 	<ostream>
 	<vector>
 	<string>
@@ -52,7 +52,7 @@
 	<ostream>
 	"ChessPiece.h"
 
-1544440125 source:/home/katzenmaul/Desktop/mbds/chess/back-end/chess-beast/src/ChessPiece.cpp
+1544462035 source:/home/katzenmaul/Desktop/mbds/chess/back-end/chess-beast/src/ChessPiece.cpp
 	"ChessPiece.h"
 	<iostream>
 	<vector>
@@ -62,7 +62,7 @@
 	"ChessBoardCase.h"
 	<algorithm>
 
-1544369732 source:/home/katzenmaul/Desktop/mbds/chess/back-end/chess-beast/src/Pawn.cpp
+1544477688 source:/home/katzenmaul/Desktop/mbds/chess/back-end/chess-beast/src/Pawn.cpp
 	"Pawn.h"
 	<iostream>
 	<cmath>
@@ -72,18 +72,20 @@
 	<ostream>
 	"ChessPiece.h"
 
-1544440797 /home/katzenmaul/Desktop/mbds/chess/back-end/chess-beast/include/ChessPlayer.h
+1544476981 /home/katzenmaul/Desktop/mbds/chess/back-end/chess-beast/include/ChessPlayer.h
 	<string>
 	<ostream>
 	<vector>
 	"ChessBoard.h"
 
-1544459468 source:/home/katzenmaul/Desktop/mbds/chess/back-end/chess-beast/src/ChessPlayer.cpp
+1544477015 source:/home/katzenmaul/Desktop/mbds/chess/back-end/chess-beast/src/ChessPlayer.cpp
 	"ChessPlayer.h"
 	"Pawn.h"
 	"Rock.h"
 	"Knight.h"
 	"Bishop.h"
+	"Queen.h"
+	"King.h"
 	<iostream>
 	<algorithm>
 
@@ -91,20 +93,20 @@
 	<ostream>
 	"ChessPiece.h"
 
-1544457504 source:/home/katzenmaul/Desktop/mbds/chess/back-end/chess-beast/src/Rock.cpp
+1544477679 source:/home/katzenmaul/Desktop/mbds/chess/back-end/chess-beast/src/Rock.cpp
 	"Rock.h"
 
 1544457415 /home/katzenmaul/Desktop/mbds/chess/back-end/chess-beast/include/Knight.h
 	<ostream>
 	"ChessPiece.h"
 
-1544458377 source:/home/katzenmaul/Desktop/mbds/chess/back-end/chess-beast/src/Knight.cpp
+1544477701 source:/home/katzenmaul/Desktop/mbds/chess/back-end/chess-beast/src/Knight.cpp
 	"Knight.h"
 	<iostream>
 	<cmath>
 	"ChessEnum.h"
 
-1544459319 source:/home/katzenmaul/Desktop/mbds/chess/back-end/chess-beast/src/Bishop.cpp
+1544477674 source:/home/katzenmaul/Desktop/mbds/chess/back-end/chess-beast/src/Bishop.cpp
 	"Bishop.h"
 	<iostream>
 	<cmath>
@@ -123,4 +125,18 @@
 1544460039 /home/katzenmaul/Desktop/mbds/chess/back-end/chess-beast/include/Queen.h
 	<ostream>
 	"ChessPiece.h"
+
+1544477695 source:/home/katzenmaul/Desktop/mbds/chess/back-end/chess-beast/src/King.cpp
+	"King.h"
+	<iostream>
+	<cmath>
+	"ChessEnum.h"
+
+1544461238 /home/katzenmaul/Desktop/mbds/chess/back-end/chess-beast/include/King.h
+	<ostream>
+	"ChessPiece.h"
+
+1544472098 /home/katzenmaul/Desktop/mbds/chess/back-end/chess-beast/include/root_certificates.h
+	<boost/asio/ssl.hpp>
+	<string>
 

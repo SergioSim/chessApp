@@ -20,6 +20,7 @@ class ChessPiece
         std::string getPieceColorString() const;
         int getX() const;
         int getY() const;
+        static bool isOnBoard(int x, int y);
         void setPiecePosition(int x, int y);
         std::vector<std::vector<int> >& getPieceAttackPositions();
         const std::vector<std::vector<int> >& readPieceAttackPositions() const;

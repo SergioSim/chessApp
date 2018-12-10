@@ -32,5 +32,5 @@ void Rock::computeMove(){
     goRock(_pieceMovePositions, _pieceAttackPositions, _chessboard, _pieceColor, _x, _y, -1, 0);
     goRock(_pieceMovePositions, _pieceAttackPositions, _chessboard, _pieceColor, _x, _y, 0, 1);
     goRock(_pieceMovePositions, _pieceAttackPositions, _chessboard, _pieceColor, _x, _y, 0, -1);
-
+    _chessboard.addAttacks(*this);
 }
