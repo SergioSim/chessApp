@@ -5,7 +5,7 @@
 using namespace std;
 
 //std::string chessColorsString[] = {"white", "black"};
-std::string chessEnumString[] = {"white", "black", "pawn", "rock", "knight", "bishop", "queen", "king"};
+string chessEnumString[] = {"white", "black", "pawn", "rock", "knight", "bishop", "queen", "king"};
 
 ChessPiece::~ChessPiece() {}
 ChessPiece::ChessPiece(int pieceColor, int x, int y, ChessBoard& cb)
@@ -37,6 +37,14 @@ ChessPiece::ChessPiece(const ChessPiece& cp)
 
   int ChessPiece::getPieceColor() const{
       return _pieceColor;
+  }
+
+  std::string ChessPiece::getPieceNameString() const {
+      return chessEnumString[_pieceName];
+  }
+
+  std::string ChessPiece::getPieceColorString() const{
+      return chessEnumString[_pieceColor];
   }
 
   void ChessPiece::setPiecePosition(int x, int y){

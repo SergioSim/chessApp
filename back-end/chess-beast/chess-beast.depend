@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1544423362 source:/home/katzenmaul/Desktop/mbds/chess/back-end/chess-beast/main.cpp
+1544434193 source:/home/katzenmaul/Desktop/mbds/chess/back-end/chess-beast/main.cpp
 	<boost/beast/core.hpp>
 	<boost/beast/websocket.hpp>
 	<boost/asio/ip/tcp.hpp>
@@ -16,7 +16,7 @@
 	"ChessBoardCase.h"
 	"Pawn.h"
 
-1544425428 source:/home/katzenmaul/Desktop/mbds/chess/back-end/chess-beast/src/ChessGame.cpp
+1544440981 source:/home/katzenmaul/Desktop/mbds/chess/back-end/chess-beast/src/ChessGame.cpp
 	"ChessGame.h"
 	<iostream>
 	"ChessEnum.h"
@@ -38,7 +38,7 @@
 	<vector>
 	"ChessBoardCase.h"
 
-1544369663 /home/katzenmaul/Desktop/mbds/chess/back-end/chess-beast/include/ChessPiece.h
+1544440115 /home/katzenmaul/Desktop/mbds/chess/back-end/chess-beast/include/ChessPiece.h
 	<ostream>
 	<vector>
 	<string>
@@ -52,7 +52,7 @@
 	<ostream>
 	"ChessPiece.h"
 
-1544371388 source:/home/katzenmaul/Desktop/mbds/chess/back-end/chess-beast/src/ChessPiece.cpp
+1544440125 source:/home/katzenmaul/Desktop/mbds/chess/back-end/chess-beast/src/ChessPiece.cpp
 	"ChessPiece.h"
 	<iostream>
 	<vector>
@@ -72,15 +72,23 @@
 	<ostream>
 	"ChessPiece.h"
 
-1544425192 /home/katzenmaul/Desktop/mbds/chess/back-end/chess-beast/include/ChessPlayer.h
+1544440797 /home/katzenmaul/Desktop/mbds/chess/back-end/chess-beast/include/ChessPlayer.h
 	<string>
 	<ostream>
 	<vector>
 	"ChessBoard.h"
 
-1544434096 source:/home/katzenmaul/Desktop/mbds/chess/back-end/chess-beast/src/ChessPlayer.cpp
+1544454011 source:/home/katzenmaul/Desktop/mbds/chess/back-end/chess-beast/src/ChessPlayer.cpp
 	"ChessPlayer.h"
-	<Pawn.h>
+	"Pawn.h"
+	"Rock.h"
 	<iostream>
 	<algorithm>
+
+1544441446 /home/katzenmaul/Desktop/mbds/chess/back-end/chess-beast/include/Rock.h
+	<ostream>
+	"ChessPiece.h"
+
+1544453930 source:/home/katzenmaul/Desktop/mbds/chess/back-end/chess-beast/src/Rock.cpp
+	"Rock.h"
 

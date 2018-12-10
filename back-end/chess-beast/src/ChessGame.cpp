@@ -47,6 +47,10 @@ ostream& operator<<(ostream& os, const ChessGame& cg)
     os << cg._theChessBoard << endl;
     os << cg._Bplayer << endl;
     os << cg._Wplayer << endl;
+    for(unsigned int i = 0; i < cg._history.size(); i++){
+        os << cg._history[i] << " -> ";
+    }
+    os << endl;
     return os;
 }
 

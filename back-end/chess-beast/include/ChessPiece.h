@@ -15,7 +15,9 @@ class ChessPiece
         ChessPiece(const ChessPiece&);
         virtual void computeMove();
         int getPieceName() const;
+        std::string getPieceNameString() const;
         int getPieceColor() const;
+        std::string getPieceColorString() const;
         int getX() const;
         int getY() const;
         void setPiecePosition(int x, int y);

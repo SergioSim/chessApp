@@ -20,7 +20,7 @@ class ChessPlayer
         int _playerColor;
         ChessBoard& _myChessBoard;
         std::vector<ChessPiece*> _myPieces;
-        std::vector<std::string> _history;
+        std::vector<std::string>& _history;
         bool _isCheck;
 };
 

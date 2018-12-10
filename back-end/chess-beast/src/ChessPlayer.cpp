@@ -1,19 +1,25 @@
 #include "ChessPlayer.h"
-#include <Pawn.h>
+#include "Pawn.h"
+#include "Rock.h"
 #include <iostream>
 #include <algorithm>
 
 using namespace std;
 
+//string chessEnumString[] = {"white", "black", "pawn", "rock", "knight", "bishop", "queen", "king"};
+
 ChessPlayer::ChessPlayer(int playerColor, ChessBoard& theChessBoard, vector<string>& history) : _playerColor(playerColor),
-    _myChessBoard(theChessBoard), _history(history), _myPieces(), _isCheck(false)
+    _myChessBoard(theChessBoard), _myPieces(), _history(history), _isCheck(false)
 {
-    _myPieces.resize(8);
+    _myPieces.resize(10);
     int pawnY = (playerColor == 1) ? 7:2;
     for(int i = 0 ; i < 8 ; i++){
         _myPieces[i] = new Pawn(playerColor, i + 1, pawnY, theChessBoard);
         _myPieces[i]->computeMove();
     }
+    int rockY = (playerColor == 1) ? 8:1;
+    _myPieces[8] = new Rock(playerColor, 1, rockY, theChessBoard);
+    _myPieces[9] = new Rock(playerColor, 8, rockY, theChessBoard);
 }
 
 ChessPlayer::~ChessPlayer() {
@@ -39,8 +45,8 @@ bool ChessPlayer::movePiece(int xf, int yf, int xs, int ys){
                 }
                 _myChessBoard.modify(xf, yf).modifyPiece()->setPiecePosition(xs,ys);
                 _myChessBoard.modify(xs, ys).modifyPiece()->computeMove();
-                //string str = cbc.getPieceColor() << "," << c xf << "," << yf << "," << xs << "," << ys;
-                //cout << str;
+                string str = cp->getPieceColorString() + "," + cp->getPieceNameString() + "," + to_string(xf) + "," + to_string(yf) + "," + to_string(xs) + "," + to_string(ys);
+                _history.push_back(str);
                 return true;
             }
         }else{
