@@ -97,9 +97,19 @@
 	<ostream>
 	"ChessPiece.h"
 
-1544457541 source:/home/katzenmaul/Desktop/mbds/chess/back-end/chess-beast/src/Knight.cpp
+1544458377 source:/home/katzenmaul/Desktop/mbds/chess/back-end/chess-beast/src/Knight.cpp
 	"Knight.h"
 	<iostream>
 	<cmath>
 	"ChessEnum.h"
+
+1544459319 source:/home/katzenmaul/Desktop/mbds/chess/back-end/chess-beast/src/Bishop.cpp
+	"Bishop.h"
+	<iostream>
+	<cmath>
+	"ChessEnum.h"
+
+1544459096 /home/katzenmaul/Desktop/mbds/chess/back-end/chess-beast/include/Bishop.h
+	<ostream>
+	"ChessPiece.h"
 
