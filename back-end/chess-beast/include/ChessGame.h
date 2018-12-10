@@ -19,6 +19,7 @@ class ChessGame
 
     private:
         ChessBoard _theChessBoard;
+        std::vector<std::string> _history;
         ChessPlayer _Wplayer;
         ChessPlayer _Bplayer;
         bool _isBlacksTurn;

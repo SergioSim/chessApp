@@ -5,7 +5,7 @@
 using namespace std;
 
 ChessGame::ChessGame()
-    : _theChessBoard(), _Wplayer(chessEnum::white, _theChessBoard), _Bplayer(chessEnum::black, _theChessBoard),
+    : _theChessBoard(), _history(), _Wplayer(chessEnum::white, _theChessBoard, _history), _Bplayer(chessEnum::black, _theChessBoard, _history),
     _isBlacksTurn(false), _winner( "game not finished")
 {}
 

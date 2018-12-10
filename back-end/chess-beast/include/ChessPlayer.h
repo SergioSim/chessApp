@@ -9,7 +9,7 @@ class ChessPlayer
 {
     friend std::ostream& operator<<(std::ostream &os, const ChessPlayer &cp);
     public:
-        ChessPlayer(int playerColor, ChessBoard& theChessBoard);
+        ChessPlayer(int playerColor, ChessBoard& theChessBoard, std::vector<std::string>& history);
         bool movePiece(int x1, int y1, int x2, int y2);
         void isCheckFunct();
         void computeMove();
@@ -20,6 +20,7 @@ class ChessPlayer
         int _playerColor;
         ChessBoard& _myChessBoard;
         std::vector<ChessPiece*> _myPieces;
+        std::vector<std::string> _history;
         bool _isCheck;
 };
 

@@ -5,8 +5,8 @@
 
 using namespace std;
 
-ChessPlayer::ChessPlayer(int playerColor, ChessBoard& theChessBoard) : _playerColor(playerColor),
-    _myChessBoard(theChessBoard), _myPieces(), _isCheck(false)
+ChessPlayer::ChessPlayer(int playerColor, ChessBoard& theChessBoard, vector<string>& history) : _playerColor(playerColor),
+    _myChessBoard(theChessBoard), _history(history), _myPieces(), _isCheck(false)
 {
     _myPieces.resize(8);
     int pawnY = (playerColor == 1) ? 7:2;
@@ -39,6 +39,8 @@ bool ChessPlayer::movePiece(int xf, int yf, int xs, int ys){
                 }
                 _myChessBoard.modify(xf, yf).modifyPiece()->setPiecePosition(xs,ys);
                 _myChessBoard.modify(xs, ys).modifyPiece()->computeMove();
+                //string str = cbc.getPieceColor() << "," << c xf << "," << yf << "," << xs << "," << ys;
+                //cout << str;
                 return true;
             }
         }else{
