@@ -7,7 +7,7 @@ Rock::Rock(int pieceColor, int x, int y, ChessBoard& cb) : ChessPiece(pieceColor
 
 Rock::~Rock(){}
 
-void go(std::vector<std::vector<int> >& pieceMove, std::vector<std::vector<int> >& pieceAttack, ChessBoard& cb, int _pieceColor ,int _x, int _y, int goRight, int goUp)
+void goRock(std::vector<std::vector<int> >& pieceMove, std::vector<std::vector<int> >& pieceAttack, ChessBoard& cb, int _pieceColor ,int _x, int _y, int goRight, int goUp)
 {
     int diff = (_pieceColor == chessEnum::black ? -1 : 1);
     int i = 1;
@@ -28,9 +28,9 @@ void go(std::vector<std::vector<int> >& pieceMove, std::vector<std::vector<int> 
 void Rock::computeMove(){
     if(_isDead){return;}
     ChessPiece::computeMove();
-    go(_pieceMovePositions, _pieceAttackPositions, _chessboard, _pieceColor, _x, _y, 1, 0);
-    go(_pieceMovePositions, _pieceAttackPositions, _chessboard, _pieceColor, _x, _y, -1, 0);
-    go(_pieceMovePositions, _pieceAttackPositions, _chessboard, _pieceColor, _x, _y, 0, 1);
-    go(_pieceMovePositions, _pieceAttackPositions, _chessboard, _pieceColor, _x, _y, 0, -1);
+    goRock(_pieceMovePositions, _pieceAttackPositions, _chessboard, _pieceColor, _x, _y, 1, 0);
+    goRock(_pieceMovePositions, _pieceAttackPositions, _chessboard, _pieceColor, _x, _y, -1, 0);
+    goRock(_pieceMovePositions, _pieceAttackPositions, _chessboard, _pieceColor, _x, _y, 0, 1);
+    goRock(_pieceMovePositions, _pieceAttackPositions, _chessboard, _pieceColor, _x, _y, 0, -1);
 
 }

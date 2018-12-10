@@ -49,14 +49,18 @@
 		<Unit filename="include/ChessGame.h" />
 		<Unit filename="include/ChessPiece.h" />
 		<Unit filename="include/ChessPlayer.h" />
+		<Unit filename="include/Knight.h" />
 		<Unit filename="include/Pawn.h" />
+		<Unit filename="include/Rock.h" />
 		<Unit filename="main.cpp" />
 		<Unit filename="src/ChessBoard.cpp" />
 		<Unit filename="src/ChessBoardCase.cpp" />
 		<Unit filename="src/ChessGame.cpp" />
 		<Unit filename="src/ChessPiece.cpp" />
 		<Unit filename="src/ChessPlayer.cpp" />
+		<Unit filename="src/Knight.cpp" />
 		<Unit filename="src/Pawn.cpp" />
+		<Unit filename="src/Rock.cpp" />
 		<Extensions>
 			<envvars />
 			<code_completion />

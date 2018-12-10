@@ -1,6 +1,7 @@
 #include "ChessPlayer.h"
 #include "Pawn.h"
 #include "Rock.h"
+#include "Knight.h"
 #include <iostream>
 #include <algorithm>
 
@@ -11,7 +12,7 @@ using namespace std;
 ChessPlayer::ChessPlayer(int playerColor, ChessBoard& theChessBoard, vector<string>& history) : _playerColor(playerColor),
     _myChessBoard(theChessBoard), _myPieces(), _history(history), _isCheck(false)
 {
-    _myPieces.resize(10);
+    _myPieces.resize(12);
     int pawnY = (playerColor == 1) ? 7:2;
     for(int i = 0 ; i < 8 ; i++){
         _myPieces[i] = new Pawn(playerColor, i + 1, pawnY, theChessBoard);
@@ -20,6 +21,10 @@ ChessPlayer::ChessPlayer(int playerColor, ChessBoard& theChessBoard, vector<stri
     int rockY = (playerColor == 1) ? 8:1;
     _myPieces[8] = new Rock(playerColor, 1, rockY, theChessBoard);
     _myPieces[9] = new Rock(playerColor, 8, rockY, theChessBoard);
+    _myPieces[10] = new Knight(playerColor, 2, rockY, theChessBoard);
+    _myPieces[11] = new Knight(playerColor, 7, rockY, theChessBoard);
+    _myPieces[10]->computeMove();
+    _myPieces[11]->computeMove();
 }
 
 ChessPlayer::~ChessPlayer() {
