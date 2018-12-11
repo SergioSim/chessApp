@@ -26,9 +26,9 @@ ChessPiece::ChessPiece(const ChessPiece& cp)
 
 
   void ChessPiece::computeMove(){
+      _chessboard.delAttacks(*this);
       _pieceMovePositions.clear();
       _pieceAttackPositions.clear();
-      _chessboard.delAttacks(*this);
   }
 
   int ChessPiece::getPieceName() const{
