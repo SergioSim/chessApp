@@ -10,8 +10,6 @@
 
 using namespace std;
 
-//string chessEnumString[] = {"white", "black", "pawn", "rock", "knight", "bishop", "queen", "king"};
-
 ChessPlayer::ChessPlayer(int playerColor, ChessBoard& theChessBoard, vector<string>& history) : _playerColor(playerColor),
     _myChessBoard(theChessBoard), _myPieces(), _history(history), _isCheck(false)
 {
@@ -74,30 +72,37 @@ bool ChessPlayer::movePiece(int xf, int yf, int xs, int ys){
     return false;
 }
 
-void ChessPlayer::computeMove(){
-    for(unsigned int i = 0 ; i < _myPieces.size() ; i++){
+void ChessPlayer::computeMove()
+{
+    for(unsigned int i = 0 ; i < _myPieces.size() ; i++)
+    {
         _myPieces[i]->computeMove();
     }
 }
 
-//void ChessPlayer::isCheckFunct(){
-//    int king = 8;
-//    int x = myPieces[king]->getPiecePositionX();
-//    int y = myPieces[king]->getPiecePositionY();
-//    vector<ChessPiece*> attacks = myChessBoard->readAttacks(x,y);
-//    if(attacks.size() == 0){
-//        isCheck = false;
-//        return;
-//    }
-//    for(unsigned int i = 0 ; i < attacks.size(); i++){
-//        if(attacks[i]->getPieceColor() != playerColor){
-//                isCheck = true;
-//                cout << "!!! Check "<< playerColor << " player !!!" << endl;
-//                return;
-//        }
-//    }
-//    isCheck = false;
-//}
+void ChessPlayer::isCheckFunct()
+{
+    int king = 15;
+    int x = _myPieces[king]->getX();
+    int y = _myPieces[king]->getY();
+    int diff = (_playerColor == chessEnum::black ? -1 : 1);
+    const std::vector<ChessPiece*> attacks = _myChessBoard.read(x,y).getAttacks();
+    if(attacks.size() == 0)
+    {
+        _isCheck = false;
+        return;
+    }
+    for(unsigned int i = 0 ; i < attacks.size(); i++)
+    {
+        if(attacks[i]->getPieceColor() == _playerColor + diff)
+        {
+            _isCheck = true;
+            cout << "!!! Check "<< _playerColor << " player !!!" << endl;
+            return;
+        }
+    }
+    _isCheck = false;
+}
 
 void ChessPlayer::computeKing()
 {

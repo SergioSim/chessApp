@@ -24,6 +24,7 @@ void goKing(std::vector<std::vector<int> >& pieceMove, std::vector<std::vector<i
         {
             if(vec[i]->getPieceColor() == _pieceColor + diff){
                 isUnderAtack = true;
+                cout << "who attacks " << vec[i]->getPieceNameString();
             }
         }
         if(cb.read(_x+goRight, _y+goUp).getPiece() != nullptr)

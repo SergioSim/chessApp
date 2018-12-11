@@ -73,10 +73,23 @@ void ChessBoard::delPiece(ChessPiece& cp)
 ostream& operator<< (ostream& os, const ChessBoard& cb){
     os << " ChessBoard board =" << endl;
     for(int y = 0; y < 8 ; y++){
-            for(int x = 0; x < 8 ; x++){
-                os << " [" << cb._board[x][y]<< "]";
+        for(int x = 0; x < 8 ; x++){
+            os << " [" << cb._board[x][y]<< "]";
+        }
+        os << endl;
+    }
+    os << endl;
+    for(int y = 0; y < 8 ; y++){
+        for(int x = 0; x < 8 ; x++){
+            os << " [ " << (x+1) << "|" << (y+1) << " ] ";
+            for(unsigned int z = 0; z < cb._board[x][y].getAttacks().size(); z++ ){
+                os << cb._board[x][y].getAttacks()[z]->getPieceNameString();
+                os << "("<< (cb._board[x][y].getAttacks()[z]->getX()) << "|";
+                os << cb._board[x][y].getAttacks()[z]->getX() << ")";
             }
             os << endl;
+        }
+        os << endl;
     }
     return os;
 }
