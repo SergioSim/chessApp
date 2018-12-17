@@ -26,7 +26,10 @@ class ChessPiece
         const std::vector<std::vector<int> >& readPieceAttackPositions() const;
         std::vector<std::vector<int> >& getPieceMovePositions();
         const std::vector<std::vector<int> >& readPieceMovePositions() const;
+        bool getIsFirstMove();
+        void setIsFirstMove(bool isFirstMove);
         virtual void kill();
+        virtual void reincarnate();
         virtual ~ChessPiece();
         ChessPiece& operator=(const ChessPiece&);
 

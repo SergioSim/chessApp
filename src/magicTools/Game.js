@@ -17,7 +17,7 @@ export class Game extends Component {
         selectedFigure: [],
         piecesState: []
     };
-    this.socket = new WebSocket('ws://192.168.0.159:8082');
+    this.socket = new WebSocket('ws://10.0.2.15:8082');
   }
 
   updateDimentions(){

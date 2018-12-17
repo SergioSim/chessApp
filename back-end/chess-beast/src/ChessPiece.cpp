@@ -71,12 +71,25 @@ ChessPiece::ChessPiece(const ChessPiece& cp)
      return _pieceMovePositions;
   }
 
+bool ChessPiece::getIsFirstMove()
+{
+    return _isFirstMove;
+}
+void ChessPiece::setIsFirstMove(bool isFirstMove)
+{
+    _isFirstMove = isFirstMove;
+}
+
   void ChessPiece::kill(){
       _isDead = true;
       _chessboard.delAttacks(*this);
       _chessboard.delPiece(*this);
       _pieceMovePositions.clear();
       _pieceAttackPositions.clear();
+  }
+
+  void ChessPiece::reincarnate(){
+      _isDead = false;
   }
 
   int ChessPiece::getX() const{

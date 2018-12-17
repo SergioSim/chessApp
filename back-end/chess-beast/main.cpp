@@ -78,7 +78,7 @@ int startServer()
 {
     try
     {
-        auto const address = boost::asio::ip::make_address("192.168.0.159");
+        auto const address = boost::asio::ip::make_address("10.0.2.15");
         auto const port = static_cast<unsigned short>(atoi("8082"));
 
         // The io_context is required for all I/O
@@ -108,8 +108,10 @@ int main()
 {
     startServer();
     ChessGame cg = ChessGame();
-    cout << cg << endl;
-    cout << cg.movePiece('W', 5 ,2 , 5, 3)<< endl;
-    cout << cg << endl;
+    cg.movePiece('W', 5 ,2 , 5, 3);
+    cout << cg;
+    //cout << cg << endl;
+    //cout << cg.movePiece('W', 5 ,2 , 5, 3)<< endl;
+    //cout << cg << endl;
     return 0;
 }

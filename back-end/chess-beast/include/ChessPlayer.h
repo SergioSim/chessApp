@@ -14,6 +14,9 @@ class ChessPlayer
         void isCheckFunct();
         void computeMove();
         void computeKing();
+        void validateMove();
+        bool getIsCheck() const;
+        std::vector<ChessPiece*> getMyPieces();
         virtual ~ChessPlayer();
         ChessBoard getChessBoard() const;
 

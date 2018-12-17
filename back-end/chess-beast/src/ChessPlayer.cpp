@@ -104,9 +104,19 @@ void ChessPlayer::isCheckFunct()
     _isCheck = false;
 }
 
+std::vector<ChessPiece*> ChessPlayer::getMyPieces()
+{
+    return _myPieces;
+}
+
 void ChessPlayer::computeKing()
 {
     _myPieces[15]->computeMove();
+}
+
+bool ChessPlayer::getIsCheck() const
+{
+    return _isCheck;
 }
 
 std::ostream& operator<< (std::ostream& os, const ChessPlayer& cp){

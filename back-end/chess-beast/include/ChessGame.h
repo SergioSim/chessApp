@@ -14,6 +14,8 @@ class ChessGame
         std::string getWinner() const;
         char whoMoves() const;
         bool movePiece(char color, int x1, int y1, int x2, int y2);
+        void computeMoves();
+        void validateMoves();
 
     protected:
 
@@ -24,6 +26,7 @@ class ChessGame
         ChessPlayer _Bplayer;
         bool _isBlacksTurn;
         std::string _winner;
+        std::vector<std::vector<int> > _validMoves;
 };
 
 std::ostream& operator<< (std::ostream& os, const ChessGame& cb);
