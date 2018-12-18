@@ -79,6 +79,7 @@ ostream& operator<< (ostream& os, const ChessBoard& cb){
         os << endl;
     }
     os << endl;
+    /*
     for(int y = 0; y < 8 ; y++){
         for(int x = 0; x < 8 ; x++){
             os << " [ " << (x+1) << "|" << (y+1) << " ] ";
@@ -91,6 +92,7 @@ ostream& operator<< (ostream& os, const ChessBoard& cb){
         }
         os << endl;
     }
+    */
     return os;
 }
 

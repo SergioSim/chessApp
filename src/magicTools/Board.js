@@ -53,12 +53,14 @@ export class Board extends Component {
                 this.gameContext.piecesState[first].changePiece({
                     isSelected: theSecond.isSelected,
                     piece: theSecond.piece,
-                    pieceColor: theSecond.pieceColor
+                    pieceColor: theSecond.pieceColor,
+                    isUnderMove: theSecond.isUnderMove
                 });
                 this.gameContext.piecesState[second].changePiece({
                     isSelected: theFirst.isSelected,
                     piece: theFirst.piece,
-                    pieceColor: theFirst.pieceColor
+                    pieceColor: theFirst.pieceColor,
+                    isUnderMove: theFirst.isUnderMove
                 });
             }
         }

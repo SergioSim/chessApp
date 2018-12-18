@@ -22,15 +22,15 @@ std::string messageListener(ChessGame& cg, std::string s)
 {
     std::vector<std::string> results;
     boost::split(results, s, [](char c){return c == ',';});
+    std::string::size_type sz;
     if(results.size() == 5){
-        std::string::size_type sz;
         bool b = cg.movePiece(results[0][0], std::stoi(results[1],&sz),std::stoi(results[2],&sz),std::stoi(results[3],&sz),std::stoi(results[4],&sz));
         std::cout << cg << std::endl;
         return b ? "1":"0";
-    }else{
-        std::cout << cg << std::endl;
-        return s;
+    }else if(results.size() == 3){
+        s = cg.getMoves(results[0][0], std::stoi(results[1],&sz),std::stoi(results[2],&sz));
     }
+    return s;
 }
 
 void do_session(tcp::socket& socket)
@@ -78,7 +78,7 @@ int startServer()
 {
     try
     {
-        auto const address = boost::asio::ip::make_address("10.0.2.15");
+        auto const address = boost::asio::ip::make_address("0.0.0.0");
         auto const port = static_cast<unsigned short>(atoi("8082"));
 
         // The io_context is required for all I/O

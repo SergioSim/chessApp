@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1545027828 source:/home/katzenmaul/Desktop/mbds/chess/back-end/chess-beast/main.cpp
+1545144384 source:/home/katzenmaul/Desktop/mbds/chess/back-end/chess-beast/main.cpp
 	<boost/beast/core.hpp>
 	<boost/beast/websocket.hpp>
 	<boost/asio/ip/tcp.hpp>
@@ -16,20 +16,21 @@
 	"ChessBoardCase.h"
 	"Pawn.h"
 
-1545027693 source:/home/katzenmaul/Desktop/mbds/chess/back-end/chess-beast/src/ChessGame.cpp
+1545141926 source:/home/katzenmaul/Desktop/mbds/chess/back-end/chess-beast/src/ChessGame.cpp
 	"ChessGame.h"
-	<iostream>
 	"ChessEnum.h"
+	<iostream>
+	<algorithm>
 
 1544036863 /home/katzenmaul/Desktop/mbds/chess/back-end/chess-beast/src/ChessGame.h
 	<ostream>
 
-1545028480 /home/katzenmaul/Desktop/mbds/chess/back-end/chess-beast/include/ChessGame.h
+1545142630 /home/katzenmaul/Desktop/mbds/chess/back-end/chess-beast/include/ChessGame.h
 	<ostream>
 	"ChessBoard.h"
 	"ChessPlayer.h"
 
-1545026635 source:/home/katzenmaul/Desktop/mbds/chess/back-end/chess-beast/src/ChessBoard.cpp
+1545137106 source:/home/katzenmaul/Desktop/mbds/chess/back-end/chess-beast/src/ChessBoard.cpp
 	<iostream>
 	"ChessBoard.h"
 

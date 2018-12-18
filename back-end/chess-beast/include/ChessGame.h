@@ -14,6 +14,7 @@ class ChessGame
         std::string getWinner() const;
         char whoMoves() const;
         bool movePiece(char color, int x1, int y1, int x2, int y2);
+        std::string getMoves(char color, int x, int y) const;
         void computeMoves();
         void validateMoves();
 
