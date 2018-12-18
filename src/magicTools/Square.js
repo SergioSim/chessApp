@@ -136,7 +136,7 @@ export class Square extends Component {
 
   render() {
     const divStyle = {
-      background: this.state.isUnderMove ? "#ff5733" : !this.state.isSelected ? (this.state.x + this.state.y) % 2 !== 0 ? "#7d8796" : "#e8ebef" : "#5bd75b",
+      background: this.state.isUnderMove ? "#3c71c4" : !this.state.isSelected ? (this.state.x + this.state.y) % 2 !== 0 ? "#7d8796" : "#e8ebef" : "#5bd75b",
     };
     const spriteStyle = {
       top: Square.pieceColor[this.state.pieceColor]+"%",
